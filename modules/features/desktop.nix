@@ -7,7 +7,7 @@
     programs.niri.package = selfpkgs.myNiri; # Declared in niri.nix
 
     programs.fish.enable = true;
-    programs.fish.package = selfpkgs.myShell; # Declared in fish.nix
+    programs.fish.package = selfpkgs.myEnvironment; # Declared in environment.nix
 
     programs.git.enable = true;
     programs.git.package = selfpkgs.myGit; # Declared in git.nix

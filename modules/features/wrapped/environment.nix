@@ -1,7 +1,7 @@
 { self, inputs, lib, ... }: {
 
   perSystem = { pkgs, self', ... }: {
-    packages.myShell = inputs.wrappers.lib.wrapPackage {
+    packages.myEnvironment = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
       package = self'.packages.myFish;
       runtimeInputs = [
