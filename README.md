@@ -1,2 +1,11 @@
 # SljusarD's NixOS Configuration
-._.
+Holy Nix ._.
+## TODO
+### High Priority
+- Make configuration 100% dendritic and reproducible
+- Add EconadzorServer host
+### Medium Priority
+- Figure out nix-wrapper-modules and wrappers
+- Make proper README.md
+### Low Priority
+- Figure out development environments
