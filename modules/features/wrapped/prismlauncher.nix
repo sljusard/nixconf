@@ -4,7 +4,7 @@
     packages.myPrismLauncher = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
       package = pkgs.prismlauncher;
-      jdks = [
+      jdks = with pkgs; [
         graalvmPackages.graalvm-ce
 	jdk21
       ];

@@ -1,6 +1,8 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.gaming = { pkgs, lib, ... }: {
+  flake.nixosModules.gaming = { pkgs, lib, ... }: let
+    selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
+  in {
     programs.steam = {
       enable = true;
       # remotePlay.openFirewall = true;
@@ -12,12 +14,11 @@
     programs.gamemode.enable = true;
     programs.gamescope.enable = true;
 
-    environment.systemPackages = with pkgs; [
-      prismlauncher
-      mangohud
-      protonplus
+    environment.systemPackages = [
+      selfpkgs.myPrismLauncher
+      pkgs.mangohud
+      pkgs.protonplus
     ];
-
   };
   
 }
