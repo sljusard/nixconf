@@ -109,7 +109,7 @@
   environment.systemPackages = with pkgs; [
       emacs
       exfat
-      bottles
+#      bottles
       warehouse
       gparted
       darktable
