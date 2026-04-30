@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.myDesktop = { pkgs, lib, ... }: let
+  flake.nixosModules.desktop = { pkgs, lib, ... }: let
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
     programs.niri.enable = true;

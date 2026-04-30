@@ -8,7 +8,8 @@
         gaming
 	audio
 	neovim
-	myDesktop
+	desktop
+        ssh
       ];
 
     boot.loader.systemd-boot.enable = true;

@@ -15,7 +15,7 @@
     programs.gamescope.enable = true;
 
     environment.systemPackages = [
-      selfpkgs.myPrismLauncher
+      selfpkgs.myPrismLauncher # Declared in prismlauncher.nix
       pkgs.mangohud
       pkgs.protonplus
     ];
