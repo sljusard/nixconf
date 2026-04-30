@@ -114,6 +114,8 @@
       emacs
       exfat
 #      bottles
+      pass
+#      gnupg
       warehouse
       gparted
       darktable
@@ -132,6 +134,12 @@
 
   services.flatpak.enable = true;
   services.lact.enable = true;
+
+#  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
 
   programs.ssh = {
     extraConfig = "
