@@ -4,7 +4,7 @@
     config = {
       settings = let
         noctaliaExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myNoctalia;
-	alacrittyExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myAlacritty;
+	# alacrittyExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myAlacritty;
 	footExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myFoot;
       in {
          spawn-at-startup = [
@@ -59,32 +59,32 @@
           n = _: {};
 	in {
           "Mod+Return".spawn-sh = footExe;
-	  "Mod+Shift+Return".spawn-sh = alacrittyExe;
+	  # "Mod+Shift+Return".spawn-sh = alacrittyExe;
           "Mod+S".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
 
           "Mod+Q".close-window = n;
           "Mod+F".maximize-column = n;
 	  "Mod+G".fullscreen-window = n;
 	  "Mod+C".center-column = n;
-	  "Mod+Shift+F".toggle-window-floating = _: {};
+	  "Mod+Shift+F".toggle-window-floating = n;
 
-	  "Mod+Left".focus-column-left = _: {};
-	  "Mod+Right".focus-column-right = _: {};
-	  "Mod+Up".focus-window-up = _: {};
-	  "Mod+Down".focus-window-down = _: {};
+	  "Mod+Left".focus-column-left = n;
+	  "Mod+Right".focus-column-right = n;
+	  "Mod+Up".focus-window-up = n;
+	  "Mod+Down".focus-window-down = n;
 
-	  "Mod+Shift+Left".move-column-left = _: {};
-	  "Mod+Shift+Right".move-column-right = _: {};
-	  "Mod+Shift+Up".move-window-up = _: {};
-	  "Mod+Shift+Down".move-window-down = _: {};
-	  "Mod+Ctrl+Left".consume-or-expel-window-left = _: {};
-	  "Mod+Ctrl+Right".consume-or-expel-window-right = _: {};
+	  "Mod+Shift+Left".move-column-left = n;
+	  "Mod+Shift+Right".move-column-right = n;
+	  "Mod+Shift+Up".move-window-up = n;
+	  "Mod+Shift+Down".move-window-down = n;
+	  "Mod+Ctrl+Left".consume-or-expel-window-left = n;
+	  "Mod+Ctrl+Right".consume-or-expel-window-right = n;
 
-          "Mod+Page_Up".focus-workspace-up = _: {};
-          "Mod+Page_Down".focus-workspace-down = _: {};
+          "Mod+Page_Up".focus-workspace-up = n;
+          "Mod+Page_Down".focus-workspace-down = n;
 	  
-	  "Mod+Shift+Page_Up".move-column-to-workspace-up = _: {};
-	  "Mod+Shift+Page_Down".move-column-to-workspace-down = _: {};
+	  "Mod+Shift+Page_Up".move-column-to-workspace-up = n;
+	  "Mod+Shift+Page_Down".move-column-to-workspace-down = n;
 
 	  "Mod+1".focus-workspace = 1;
 	  "Mod+2".focus-workspace = 2;
@@ -108,14 +108,14 @@
 	  "Mod+Shift+9".move-column-to-workspace = 9;
 	  "Mod+Shift+0".move-column-to-workspace = 10;
 
-	  "Mod+WheelScrollDown".focus-column-left = _: {};
-	  "Mod+WheelScrollUp".focus-column-right = _: {};
-	  "Mod+Shift+WheelScrollDown".focus-workspace-down = _: {};
-	  "Mod+Shift+WheelScrollUp".focus-workspace-up = _: {};
+	  "Mod+WheelScrollDown".focus-column-left = n;
+	  "Mod+WheelScrollUp".focus-column-right = n;
+	  "Mod+Shift+WheelScrollDown".focus-workspace-down = n;
+	  "Mod+Shift+WheelScrollUp".focus-workspace-up = n;
 
-	  "F12".screenshot-screen = _: {};
-	  "Ctrl+F12".screenshot = _: {};
-	  "Shift+F12".screenshot-window = _: {};
+	  "F12".screenshot-screen = n;
+	  "Ctrl+F12".screenshot = n;
+	  "Shift+F12".screenshot-window = n;
         };
       };
     };
