@@ -4,14 +4,15 @@
     fishConfig = 
       pkgs.writeText "fish.conf"
       ''
+        set fish_greeting
         ${lib.getExe pkgs.zoxide} init fish | source
       '';
   in {
     packages.myFish = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
       package = pkgs.fish;
-      runtimeInputs = [
-        pkgs.zoxide
+      runtimeInputs = with pkgs; [
+        zoxide
       ];
       flags = {
         "-C" = "source ${fishConfig}";
