@@ -10,6 +10,7 @@
 	neovim
 	desktop
         ssh
+	passwords
       ];
 
     boot.loader.systemd-boot.enable = true;
@@ -114,9 +115,6 @@
       emacs
       exfat
 #      bottles
-      pass
-      gopass
-      passExtensions.pass-otp
       warehouse
       gparted
       darktable
@@ -135,13 +133,6 @@
 
   services.flatpak.enable = true;
   services.lact.enable = true;
-
-#  services.pcscd.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-curses;
-    settings.default-cache-ttl = 30;
-  };
 
   programs.ssh = {
     extraConfig = "
