@@ -127,7 +127,10 @@
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
-  fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages = [
+    pkgs.monocraft
+  ]
+  ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   programs.yazi.enable = true;
 
@@ -136,7 +139,7 @@
 
   programs.ssh = {
     extraConfig = "
-      Host ecoServer
+      Host ecoserver
 	Hostname 217.114.188.94
 	Port 4572
 	User sljusard

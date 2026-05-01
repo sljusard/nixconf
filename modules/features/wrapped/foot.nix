@@ -5,10 +5,11 @@
       settings = {
         mouse.hide-when-typing = "yes";
         main.font = "BlexMono Nerd Font:size=11.25";
+#        main.font = "Monocraft:size=12";
         colors-dark = {
           background = "181818";
           alpha = "0.7";
-          blur = "no";
+          blur = "yes";
         };
       };
     };
