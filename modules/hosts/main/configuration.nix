@@ -115,7 +115,8 @@
       exfat
 #      bottles
       pass
-#      gnupg
+      gopass
+      passExtensions.pass-otp
       warehouse
       gparted
       darktable
@@ -139,6 +140,7 @@
   programs.gnupg.agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-curses;
+    settings.default-cache-ttl = 30;
   };
 
   programs.ssh = {
