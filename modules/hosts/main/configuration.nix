@@ -11,6 +11,7 @@
 	desktop
         ssh
 	passwords
+	ai
       ];
 
     boot.loader.systemd-boot.enable = true;
@@ -119,10 +120,10 @@
       gparted
       darktable
       udiskie
-      slurp
-      grim
+#      slurp
+#      grim
       lynx
-      satty
+#      satty
       filezilla
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
