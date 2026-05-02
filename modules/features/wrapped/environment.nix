@@ -3,7 +3,7 @@
   perSystem = { pkgs, self', ... }: {
     packages.myEnvironment = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
-      package = self'.packages.myFishRewrite;
+      package = self'.packages.myFish;
       runtimeInputs = [
         pkgs.wget
 	pkgs.fastfetch

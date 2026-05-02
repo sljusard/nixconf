@@ -1,21 +1,23 @@
-{ inputs, lib, ... }: {
+{ self, inputs, lib, ... }: {
 
-  perSystem = { pkgs, self', ... }: let
-    fishConfig = 
-      pkgs.writeText "fish.conf"
-      ''
+  flake.nixosModules.myFishConfig = { pkgs, config, ... }: {
+    config = {
+      configFile.content = ''
         set fish_greeting
         ${lib.getExe pkgs.zoxide} init fish | source
       '';
-  in {
-    packages.myFish = inputs.wrappers.lib.wrapPackage {
+    };
+  };
+
+  perSystem = { pkgs, self', ... }: {
+    packages.myFish = inputs.wrapper-modules.wrappers.fish.wrap {
       inherit pkgs;
-      package = pkgs.fish;
-      runtimeInputs = with pkgs; [
+      imports = [self.nixosModules.myFishConfig];
+      extraPackages = with pkgs; [
         zoxide
       ];
       flags = {
-        "-C" = "source ${fishConfig}";
+        "--no-config" = lib.mkForce false;
       };
     };
   };
