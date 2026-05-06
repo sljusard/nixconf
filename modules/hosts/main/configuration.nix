@@ -153,6 +153,11 @@
 	Hostname 217.114.188.94
 	Port 4572
 	User sljusard
+
+      Host vpnserver
+        Hostname 132.243.254.68
+	Port 22
+	User root
    ";
    startAgent = true;
   };
