@@ -77,7 +77,7 @@
 
     time.timeZone = "Europe/Moscow";
 
-    i18n.defaultLocale = "C.UTF-8";
+    i18n.defaultLocale = "en_IE.UTF-8";
     i18n.extraLocaleSettings = {
       LC_ADDRESS = "ru_RU.UTF-8";
       LC_IDENTIFICATION = "ru_RU.UTF-8";
@@ -105,7 +105,6 @@
 	obsidian
         discord
         davinci-resolve
-	element-desktop
         vesktop
         libreoffice-qt
       ];
@@ -114,6 +113,7 @@
   environment.systemPackages = with pkgs; [
       emacs
       exfat
+      element-desktop
 #      bottles
       warehouse
       gparted
@@ -136,6 +136,7 @@
   ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   programs.yazi.enable = true;
+  programs.lazygit.enable = true;
 
   services.flatpak.enable = true;
   services.lact.enable = true;
