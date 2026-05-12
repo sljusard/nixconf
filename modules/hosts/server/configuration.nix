@@ -3,8 +3,7 @@
   flake.nixosModules.ecoserverConfiguration = { pkgs, lib, ... }: let
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
-    imports =
-    [
+    imports = with self.nixosModules; [
       ssh
       neovim
       continuwuity
@@ -89,6 +88,7 @@
     environment.systemPackages = with pkgs; [
       firefox
     ];
+
     programs.yazi.enable = true;
 
     programs.git.enable = true;
