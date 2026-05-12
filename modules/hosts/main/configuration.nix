@@ -4,16 +4,19 @@
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
     imports = with self.nixosModules; [
-        noosphereHardware
-        gaming
-	audio
-	podman
-	neovim
-	desktop
-        ssh
-	passwords
-	ai
-      ];
+      gaming
+      audio
+      podman
+      neovim
+      desktop
+      ssh # Depends on noosphereSSH
+      passwords
+      ai
+
+      # Host-specific modules
+      noosphereHardware
+      noosphereSSH
+    ];
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;

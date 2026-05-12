@@ -2,8 +2,8 @@
 
   flake.nixosModules.podman = { pkgs, lib, ... }: {
     virtualisation.containers.enable = true;
-    virtualisation.podman.enable = true;
     virtualisation.podman = {
+      enable = true;
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };

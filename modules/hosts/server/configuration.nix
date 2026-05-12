@@ -4,10 +4,13 @@
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
     imports = with self.nixosModules; [
-      ssh
+      ssh # Depends on ecoserverSSH
       neovim
       continuwuity
+
+      # Host specific modules
       ecoserverHardware
+      ecoserverSSH
     ];
 
     boot.loader.systemd-boot.enable = true;
