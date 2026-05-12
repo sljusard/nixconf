@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ self, inputs, ... }: {
   
   flake.nixosModules.ecoserverConfiguration = { pkgs, lib, ... }: let
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
@@ -8,7 +8,7 @@
       ssh
       neovim
       continuwuity
-      ./hardware-configuration.nix
+      ecoserverHardware
     ];
 
     boot.loader.systemd-boot.enable = true;
