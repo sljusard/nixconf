@@ -7,6 +7,7 @@
         noosphereHardware
         gaming
 	audio
+	podman
 	neovim
 	desktop
         ssh
@@ -124,9 +125,6 @@
       lynx
 #      satty
       filezilla
-      dive
-      podman-tui
-      podman-compose
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
@@ -140,13 +138,6 @@
 
   services.flatpak.enable = true;
   services.lact.enable = true;
-
-  virtualisation.containers.enable = true;
-  virtualisation.podman.enable = true;
-  virtualisation.podman = {
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true;
-  };
 
   programs.ssh = {
     extraConfig = "
