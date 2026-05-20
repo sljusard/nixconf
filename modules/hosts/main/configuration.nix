@@ -7,7 +7,6 @@
       gaming
       audio
       podman
-#      neovim
       desktop
       ssh # Depends on noosphereSSH
       passwords
@@ -73,7 +72,7 @@
     hardware.sane.enable = true;
     hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
     services.avahi.enable = true;
-    services.avahi.nssmdns = true;
+    services.avahi.nssmdns4 = true;
 
     services.xserver.xkb = {
       layout = "us,us,ru";

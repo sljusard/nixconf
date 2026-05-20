@@ -6,6 +6,8 @@
       settings.aliases = [ 
       	"vim"
 	"vi"
+	"v"
+	"emacssucks"
       ];
     };
   };
