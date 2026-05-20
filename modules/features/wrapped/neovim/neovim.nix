@@ -5,14 +5,14 @@
       settings.config_directory = ./.;
       settings.aliases = [ 
       	"vim"
-	"vi"
-	"v"
-	"emacssucks"
+				"vi"
+				"v"
+				"emacssucks"
       ];
     };
   };
 
-  perSystem = { pkgs, lib, self', ... }: {
+  perSystem = { pkgs, self', ... }: {
     packages.myNeovim = inputs.wrapper-modules.wrappers.neovim.wrap {
       inherit pkgs;
       imports = [
