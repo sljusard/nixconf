@@ -19,7 +19,7 @@
 	  keyboard = {
 	    xkb = {
 	      layout = "us,ru";
-	      variant = "colemak,";
+	      variant = "colemak, ";
 	      options = "
 	        grp:alt_shift_toggle,
 	        compose:rctrl
@@ -61,6 +61,10 @@
           "Mod+Return".spawn-sh = footExe;
 	  # "Mod+Shift+Return".spawn-sh = alacrittyExe;
           "Mod+S".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
+
+#	  "Ctrl+Alt+1".switch-layout = "0";
+#	  "Ctrl+Alt+2".switch-layout = "1";
+#	  "Ctrl+Alt+3".switch-layout = "2";
 
           "Mod+Q".close-window = n;
           "Mod+F".maximize-column = n;

@@ -7,7 +7,7 @@
       gaming
       audio
       podman
-      neovim
+#      neovim
       desktop
       ssh # Depends on noosphereSSH
       passwords
@@ -68,7 +68,12 @@
 
     hardware.bluetooth.enable = true;
     services.udisks2.enable = true;
+
     services.printing.enable = true;
+    hardware.sane.enable = true;
+    hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
+    services.avahi.enable = true;
+    services.avahi.nssmdns = true;
 
     services.xserver.xkb = {
       layout = "us,us,ru";
@@ -99,7 +104,7 @@
     users.users.cypher = {
       isNormalUser = true;
       description = "Cypher";
-      extraGroups = [ "networkmanager" "wheel" "gamemode" "podman" ];
+      extraGroups = [ "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" ];
       packages = with pkgs; [
         qbittorrent
         vlc
@@ -128,6 +133,7 @@
       lynx
 #      satty
       filezilla
+      naps2
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
