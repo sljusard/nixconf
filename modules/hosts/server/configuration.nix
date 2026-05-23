@@ -63,7 +63,7 @@
       variant = ",colemak,";
       options = "
         grp:alt_shift_toggle,
-	compose:rctrl
+      	compose:rctrl
       ";
     };
 
@@ -71,8 +71,9 @@
 
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
+
     services.pipewire = {
-      enable = true;
+      enable = false;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
