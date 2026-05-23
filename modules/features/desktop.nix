@@ -6,15 +6,6 @@
     programs.niri.enable = true;
     programs.niri.package = selfpkgs.myNiri; # Declared in niri.nix
 
-#    systemd.user.units."niri.service" = {
-#      overrideStrategy = "asDropin";
-#      text = ''
-#        [Service]
-#        X-StopIfChanged=false
-#        X-RestartIfChanged=false
-#      '';
-#    };
-
     programs.fish.enable = true;
     programs.fish.package = selfpkgs.myEnvironment; # Declared in environment.nix
 
