@@ -79,7 +79,7 @@
       variant = ",colemak,";
       options = "
         grp:alt_shift_toggle,
-	compose:rctrl
+	      compose:rctrl
       ";
     };
 
@@ -110,11 +110,13 @@
         obs-studio
         telegram-desktop
         gimp
-	obsidian
+	      obsidian
         discord
         davinci-resolve
         vesktop
         libreoffice-qt
+        sayonara
+        cliamp
       ];
     };
 

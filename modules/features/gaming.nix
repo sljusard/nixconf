@@ -18,8 +18,8 @@
       selfpkgs.myPrismLauncher # Declared in prismlauncher.nix
       pkgs.mangohud
       pkgs.protonplus
-      pkgs.steamcmd
-      pkgs.steam-tui
+#      pkgs.steamcmd
+#      pkgs.steam-tui
     ];
   };
   
