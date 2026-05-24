@@ -5,8 +5,8 @@
   in {
     imports = with self.nixosModules; [
       ssh # Depends on ecoserverSSH
-      neovim
       continuwuity
+      podman
 
       # Host specific modules
       ecoserverHardware
@@ -102,6 +102,10 @@
     programs.fish.package = selfpkgs.myEnvironment;
 
     services.caddy.enable = true;
+
+    services.caddy.virtualHosts."budibase.econadzor.org".extraConfig = ''
+      reverse_proxy 127.0.0.1:10000
+    '';
 
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 80 443 10000 ];

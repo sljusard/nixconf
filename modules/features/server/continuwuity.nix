@@ -4,26 +4,26 @@
     services.matrix-continuwuity.enable = true;
     services.matrix-continuwuity.settings = {
       global = {
-	server_name = "econadzor.org";
+	      server_name = "econadzor.org";
         allow_registration = false;
         allow_encryption = true;
         allow_federation = true;
-	trusted_servers = [ "matrix.org" ];
-	new_user_displayname_suffix = "";
-	matrix_rtc = {
-	  foci = [
-	    { 
-	      type = "livekit"; 
-	      livekit_service_url = "https://livekit.econadzor.org"; 
-	    } 
-	  ];
-	};
-	max_request_size = 200000000;
-	well_known = {
-	  client = "https://matrix.econadzor.org";
+	      trusted_servers = [ "matrix.org" ];
+	      new_user_displayname_suffix = "";
+	      matrix_rtc = {
+          foci = [
+            { 
+              type = "livekit"; 
+              livekit_service_url = "https://livekit.econadzor.org"; 
+            } 
+          ];
+	      };
+        max_request_size = 200000000;
+        well_known = {
+          client = "https://matrix.econadzor.org";
           server = "matrix.econadzor.org:443";
-	  support_email = "sljusarde@gmail.com";
-	};
+          support_email = "sljusarde@gmail.com";
+        };
       };
     };
 
