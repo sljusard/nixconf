@@ -134,6 +134,8 @@
 #      satty
       filezilla
       naps2
+      tree-sitter
+      gcc
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 

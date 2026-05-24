@@ -1,6 +1,10 @@
 require("options")
 require("plugins.nvim-tree")
+require("plugins.tree-sitter-manager")
+require("plugins.lualine")
 
-vim.pack.add { { src = "https://github.com/catppuccin/nvim", name = "catppuccin" } }
-
-vim.cmd.colorscheme "catppuccin-mocha"
+-- vim.pack.add({"https://github.com/oskarnurm/koda.nvim"})
+-- require("koda").setup({ transparent = true })
+-- vim.cmd("colorscheme koda")
+vim.pack.add({"https://github.com/ThorstenRhau/token"})
+vim.cmd("colorscheme token")
