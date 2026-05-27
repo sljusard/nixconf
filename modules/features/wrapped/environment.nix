@@ -9,14 +9,15 @@
       runtimeInputs = [
         selfpkgs.myNeovim
         pkgs.wget
-	pkgs.fastfetch
-	pkgs.tmux
-	pkgs.rsync
-	pkgs.btop
-	pkgs.tree
-	pkgs.nmap
-	pkgs.psmisc
-	pkgs.ffmpeg-full
+        pkgs.fastfetch
+        pkgs.tmux
+        pkgs.rsync
+        pkgs.btop
+        pkgs.tree
+        pkgs.nmap
+        pkgs.psmisc
+        pkgs.ripgrep
+        pkgs.ffmpeg-full
       ];
       env = {
         EDITOR = "nvim";

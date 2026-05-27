@@ -13,7 +13,7 @@
     packages.myFish = inputs.wrapper-modules.wrappers.fish.wrap {
       inherit pkgs;
       imports = [self.nixosModules.myFishConfig];
-      extraPackages = with pkgs; [
+      runtimePkgs = with pkgs; [
         zoxide
       ];
       flags = {
