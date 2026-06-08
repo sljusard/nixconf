@@ -1,2 +1,0 @@
-
-(process:68170): GLib-GIO-CRITICAL **: 23:58:00.990: g_settings_schema_source_lookup: assertion 'source != NULL' failed
