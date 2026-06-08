@@ -17,6 +17,7 @@
         pkgs.nmap
         pkgs.psmisc
         pkgs.ripgrep
+        pkgs.fd
         pkgs.ffmpeg-full
       ];
       env = {

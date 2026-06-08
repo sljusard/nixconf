@@ -110,8 +110,8 @@
         obs-studio
         telegram-desktop
         gimp
-	      obsidian
-        discord
+	    obsidian
+        # discord
         davinci-resolve
         vesktop
         libreoffice-qt
@@ -136,6 +136,8 @@
       naps2
       tree-sitter
       gcc
+      sqlite
+      pandoc
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
@@ -151,10 +153,11 @@
   services.lact.enable = true;
 
 
-  programs.bash.shellAliases = {
+  programs.fish.shellAliases = {
     winboot = "sudo bootctl set-oneshot auto-windows && reboot";
-    rebuild = "sudo nixos-rebuild switch";
+    rebuild = "sudo nixos-rebuild switch --flake .#noosphere";
     niri-displayfix = "niri msg output HDMI-A-1 mode 2560x1440@143.996";
+    doom = "nohup ~/cypher/.config/emacs/bin/dooom emacs &";
   };
 
   networking.firewall.enable = true;

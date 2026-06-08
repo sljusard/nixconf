@@ -1,0 +1,18 @@
+{ self, inputs, ... }: {
+
+  flake.nixosModules.myEmacs = { config, wlib, pkgs, lib, ... }: {
+    config = {
+
+    };
+  };
+
+  perSystem = { pkgs, self', ... }: {
+    packages.myNeovim = inputs.wrapper-modules.wrappers.emacs.wrap {
+      inherit pkgs;
+      imports = [
+        self.nixosModules.myEmacs
+      ];
+    };
+  };
+
+}

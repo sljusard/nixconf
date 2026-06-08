@@ -1,5 +1,5 @@
 {
-  description = "SljusarD's fine-tuned general-purpose flake";
+  description = "SljusarD's fine-tuned NixOS configuraton flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvf.url = "github:notashelf/nvf";
+    # nvf.url = "github:notashelf/nvf";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
