@@ -110,7 +110,7 @@
         obs-studio
         telegram-desktop
         gimp
-	    obsidian
+        obsidian
         # discord
         davinci-resolve
         vesktop
