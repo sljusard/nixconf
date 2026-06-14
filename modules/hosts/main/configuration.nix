@@ -103,7 +103,7 @@
     users.users.cypher = {
       isNormalUser = true;
       description = "Cypher";
-      extraGroups = [ "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" ];
+      extraGroups = [ "input" "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" ];
       packages = with pkgs; [
         qbittorrent
         vlc
@@ -123,21 +123,18 @@
       emacs
       exfat
       element-desktop
-#      bottles
       warehouse
       gparted
       darktable
       udiskie
-#      slurp
-#      grim
       lynx
-#      satty
       filezilla
       naps2
       tree-sitter
       gcc
       sqlite
       pandoc
+      wl-clipboard
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
@@ -157,7 +154,7 @@
     winboot = "sudo bootctl set-oneshot auto-windows && reboot";
     rebuild = "sudo nixos-rebuild switch --flake .#noosphere";
     niri-displayfix = "niri msg output HDMI-A-1 mode 2560x1440@143.996";
-    doom = "nohup ~/cypher/.config/emacs/bin/dooom emacs &";
+    doom = "~/.config/emacs/bin/doom emacs 2>/dev/null & disown";
   };
 
   networking.firewall.enable = true;
