@@ -91,6 +91,8 @@
 
     environment.systemPackages = with pkgs; [
       firefox
+      distrobox
+      distrobox-tui
     ];
 
     programs.yazi.enable = true;
