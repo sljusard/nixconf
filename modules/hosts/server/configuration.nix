@@ -30,14 +30,6 @@
 
     networking.hostName = "ecoserver";
 
-    networking.hosts = {
-      "127.0.0.1" = [ 
-        "econadzor.org" 
-        "matrix.econadzor.org"
-        "livekit.econadzor.org"
-      ];
-    };
-  
     networking.networkmanager.enable = true;
 
     time.timeZone = "Asia/Yekaterinburg";
@@ -103,6 +95,9 @@
     programs.fish.enable = true;
     programs.fish.package = selfpkgs.myEnvironment;
 
+    # Reverse Proxy settings
+    # -----------------------------------------------------
+    
     services.caddy.enable = true;
 
     services.caddy.virtualHosts."budibase.econadzor.org".extraConfig = ''
@@ -111,6 +106,16 @@
 
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 80 443 10000 ];
+    
+    networking.hosts = {
+      "127.0.0.1" = [ 
+        "econadzor.org" 
+        "matrix.econadzor.org"
+        "livekit.econadzor.org"
+      ];
+    };
+  
+    # -----------------------------------------------------
 
     system.stateVersion = "25.11";
   };
