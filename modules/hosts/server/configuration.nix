@@ -104,19 +104,43 @@
       reverse_proxy 127.0.0.1:10000
     '';
 
+    services.caddy.virtualHosts."git.sljusard.com".extraConfig = ''
+      reverse_proxy 127.0.0.1:3000
+    '';
+
     networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 80 443 10000 ];
+    networking.firewall.allowedTCPPorts = [ 80 443 10000 3000 ];
     
     networking.hosts = {
       "127.0.0.1" = [ 
         "econadzor.org" 
         "matrix.econadzor.org"
         "livekit.econadzor.org"
+        "grafana.sljusard.com"
       ];
     };
   
     # -----------------------------------------------------
 
+    # Grafana settings (test)
+    # -----------------------------------------------------
+    
+    services.grafana = {
+      enable = true;
+      settings = {
+        server = {
+          http_addr = "127.0.0.1";
+          http_port = 3030;
+          enforce_domain = false;
+          enable_gzip = true;
+          domain = "grafana.sljusard.com";
+        };
+        analytics.reporting_enabled = false;
+        security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
+      };
+    };
+    
+    # -----------------------------------------------------
     system.stateVersion = "25.11";
   };
 }
