@@ -109,7 +109,7 @@
     '';
 
     networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 80 443 10000 3000 ];
+    networking.firewall.allowedTCPPorts = [ 80 443 10000 3000 3022 ];
     
     networking.hosts = {
       "127.0.0.1" = [ 
@@ -136,10 +136,23 @@
           domain = "grafana.sljusard.com";
         };
         analytics.reporting_enabled = false;
-        security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
+        security.secret_key = "SW2YcwTIb9zpOOhoPsMm"; # Temp key, test purposes only
       };
     };
     
+    services.prometheus.exporters.node = {
+      enable = true;
+      port = 9000;
+
+      enabledCollectors = [
+        "ethtool"
+        "softirqs"
+        "systemd"
+        "tcpstat"
+        "wifi"
+      ];
+    };
+
     # -----------------------------------------------------
     system.stateVersion = "25.11";
   };
