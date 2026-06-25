@@ -54,7 +54,7 @@
       reverse_proxy 127.0.0.1:7880
      '';
 
-    networking.firewall.allowedTCPPorts = [ 8008 8448 8081 7881 ];
+    networking.firewall.allowedTCPPorts = [ 8448 7881 ];
     networking.firewall.allowedUDPPortRanges = [ 
       { from = 50100; to = 50200; } 
       { from = 50300; to = 50400; }

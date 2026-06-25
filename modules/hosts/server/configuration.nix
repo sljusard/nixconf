@@ -108,7 +108,7 @@
     '';
 
     networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 80 443 10000 3000 3022 ];
+    networking.firewall.allowedTCPPorts = [ 80 443 10000 3000 3022 4440 ];
     
     networking.hosts = {
       "127.0.0.1" = [ 
