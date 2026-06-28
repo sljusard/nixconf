@@ -4,6 +4,7 @@
     config = {
       settings = let
         noctaliaExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myNoctalia;
+        rofiExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myRofi;
         # alacrittyExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myAlacritty;
 	      footExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myFoot;
       in {
@@ -51,7 +52,7 @@
         n = _: {};
       in {
           "Mod+Return".spawn-sh = footExe;
-          "Mod+S".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
+          "Mod+S".spawn-sh = "${rofiExe} -show drun";
 
       #	  "Ctrl+Alt+1".switch-layout = "0";
       #	  "Ctrl+Alt+2".switch-layout = "1";

@@ -15,6 +15,7 @@
     environment.systemPackages = [
       selfpkgs.myAlacritty # Declared in alacritty.nix
       selfpkgs.myFoot # Declared in foot.nix
+      selfpkgs.myRofi
     ];
   };
 
