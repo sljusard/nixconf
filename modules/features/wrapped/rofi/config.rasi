@@ -1,3 +1,4 @@
 configuration {
   font: "JetBrainsMono Nerd Font 14";
 }
+@theme "./squared-nord.rasi"

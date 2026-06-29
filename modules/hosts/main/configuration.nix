@@ -116,6 +116,7 @@
         vesktop
         libreoffice-qt
         cliamp
+        anki
       ];
     };
 
@@ -148,7 +149,6 @@
 
   services.flatpak.enable = true;
   services.lact.enable = true;
-
 
   programs.fish.shellAliases = {
     winboot = "sudo bootctl set-oneshot auto-windows && reboot";
