@@ -1,4 +1,152 @@
 configuration {
-  font: "JetBrainsMono Nerd Font 14";
+    font:           "FiraCode Nerd Font Medium 12";
+    show-icons:     true;
+    icon-theme:     "Papirus";
+    display-drun:   "";
 }
-@theme "./squared-nord.rasi"
+
+* {
+    /* base palette */
+    fg0:            #DDEBD8;     /* светло-зелёный текст     */
+    fg-dim:         #8FB58A;     /* приглушённый текст       */
+    accent-color:   #7BE38B;     /* яркий зелёный акцент     */
+    urgent-color:   #E3A07B;
+
+    /* dark + green layers (непрозрачные) */
+    bg0:            #0E1A12;     /* фон окна — тёмно-зелёный */
+    bg-raised:      #16261B;     /* приподнятый слой         */
+    bg-hover:       #21452B;     /* выделение                */
+    glass-border:   #2E5538;     /* зелёная грань            */
+
+    background-color:   @bg0;
+    text-color:         @fg0;
+
+    margin:     0;
+    padding:    0;
+    spacing:    0;
+}
+
+window {
+    location:           center;
+    width:              520;
+
+    border:             1px;
+    border-color:       @glass-border;
+    border-radius:      20px;
+
+    background-color:   @bg0;
+    padding:            10px;
+    spacing:            10px;
+    children:           [ inputbar, listview ];
+}
+
+inputbar {
+    spacing:            10px;
+    padding:            12px 14px;
+
+    border:             1px;
+    border-color:       @glass-border;
+    border-radius:      14px;
+
+    background-color:   @bg-raised;
+}
+
+prompt, entry, element-icon, element-text {
+    vertical-align: 0.5;
+}
+
+prompt {
+    text-color: @accent-color;
+}
+
+entry {
+    placeholder:        "Search…";
+    placeholder-color:  @fg-dim;
+    text-color:         @fg0;
+}
+
+textbox {
+    padding:            12px 14px;
+    border-radius:      14px;
+    background-color:   @bg-raised;
+}
+
+listview {
+    padding:        4px 0 0 0;
+    spacing:        6px;
+    lines:          8;
+    columns:        1;
+    fixed-height:   false;
+    scrollbar:      false;
+
+    background-color:   @bg0;
+}
+
+element {
+    padding:        10px 12px;
+    spacing:        10px;
+    border-radius:  12px;
+
+    background-color:   @bg-raised;
+}
+
+/* фон задаём в КАЖДОМ состоянии, иначе встроенная тема rofi
+   перебивает обобщённый element {} своим бежевым фоном */
+element normal normal {
+    background-color:   @bg-raised;
+    text-color:         @fg0;
+}
+
+element normal urgent {
+    background-color:   @bg-raised;
+    text-color:         @urgent-color;
+}
+
+element normal active {
+    background-color:   @bg-raised;
+    text-color:         @accent-color;
+}
+
+element alternate normal {
+    background-color:   @bg-raised;
+    text-color:         @fg0;
+}
+
+element alternate urgent {
+    background-color:   @bg-raised;
+    text-color:         @urgent-color;
+}
+
+element alternate active {
+    background-color:   @bg-raised;
+    text-color:         @accent-color;
+}
+
+/* выделение — зелёная подсветка с акцентной гранью */
+element selected normal, element selected active {
+    background-color:   @bg-hover;
+    text-color:         @fg0;
+
+    border:             1px;
+    border-color:       @accent-color;
+    border-radius:      12px;
+}
+
+element selected urgent {
+    background-color:   @bg-hover;
+    text-color:         @fg0;
+
+    border:             1px;
+    border-color:       @urgent-color;
+    border-radius:      12px;
+}
+
+element-icon {
+    size:               1.4em;
+    background-color:   transparent;
+}
+
+element-text {
+    text-color:         inherit;
+    background-color:   transparent;
+}

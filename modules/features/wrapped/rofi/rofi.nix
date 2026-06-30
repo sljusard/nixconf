@@ -3,6 +3,7 @@
   flake.nixosModules.myRofiConfig = { pkgs, config, ... }: {
     config = {
       "config.rasi".path = ./config.rasi;
+ #     theme = "/home/cypher/nixconf/modules/features/wrapped/rasi/squared-nord.rasi";
     };
   };
 
