@@ -20,6 +20,7 @@
       pkgs.protonplus
 #      pkgs.steamcmd
 #      pkgs.steam-tui
+      pkgs.heroic
     ];
   };
   
