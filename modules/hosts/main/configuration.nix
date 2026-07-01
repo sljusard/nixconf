@@ -164,6 +164,7 @@
   };
 
   networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 11345 ];
 
   system.stateVersion = "25.11"; 
   };
