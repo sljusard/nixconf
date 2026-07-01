@@ -20,6 +20,8 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
+    boot.supportedFilesystems = [ "nfs" ];
+
     fileSystems."/mnt/storage" = { 
       device = "/dev/disk/by-uuid/ececae3e-ecff-48a1-92c7-e0c0b7f45e78";
       fsType = "ext4";
