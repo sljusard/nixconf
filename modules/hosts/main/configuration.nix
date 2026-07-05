@@ -134,7 +134,6 @@
       exfat
       element-desktop
       warehouse
-      gparted
       darktable
       udiskie
       lynx
