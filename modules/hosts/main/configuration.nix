@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.noosphereConfiguration = { pkgs, lib, ... }: let
+  flake.nixosModules.noosphereConfiguration = { pkgs, lib, config, ... }: let
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
     imports = with self.nixosModules; [
@@ -28,7 +28,7 @@
       options = [ "defaults" "nofail" ];
     };
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackages = pkgs.linuxPackages;
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -53,7 +53,7 @@
       powerManagement.finegrained = false;
       open = true;
       nvidiaSettings = true;
-      package = pkgs.linuxPackages_latest.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
 
     hardware.nvidia.prime = {
