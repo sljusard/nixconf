@@ -123,6 +123,7 @@
         davinci-resolve
         vesktop
         libreoffice-qt
+        protonmail-bridge
         cliamp
         anki
       ];
@@ -157,6 +158,8 @@
 
   services.flatpak.enable = true;
   services.lact.enable = true;
+
+  programs.thunderbird.enable = true;
 
   programs.fish.shellAliases = {
     winboot = "sudo bootctl set-oneshot auto-windows && reboot";
