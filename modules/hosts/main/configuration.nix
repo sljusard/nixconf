@@ -119,15 +119,19 @@
         telegram-desktop
         gimp
         obsidian
-        # discord
         davinci-resolve
         vesktop
         libreoffice-qt
-        protonmail-bridge
         cliamp
+        jmtpfs
         anki
+        qtpass
       ];
     };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-40.10.5"
+  ];
 
   environment.systemPackages = with pkgs; [
       emacs
@@ -159,6 +163,7 @@
   services.lact.enable = true;
 
   programs.thunderbird.enable = true;
+  services.protonmail-bridge.enable = true;
 
   programs.fish.shellAliases = {
     winboot = "sudo bootctl set-oneshot auto-windows && reboot";
