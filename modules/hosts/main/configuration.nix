@@ -11,6 +11,7 @@
       ssh # Depends on noosphereSSH
       passwords
       ai
+      virtualisation
 
       # Host-specific modules
       noosphereHardware
