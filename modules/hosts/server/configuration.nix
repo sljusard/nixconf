@@ -82,8 +82,6 @@
     nixpkgs.config.allowUnfree = true;
 
     environment.systemPackages = with pkgs; [
-      distrobox
-      distrobox-tui
     ];
 
     programs.yazi.enable = true;

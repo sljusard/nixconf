@@ -11,7 +11,7 @@
     environment.systemPackages = with pkgs; [
       dive
       distrobox
-      boxbuddy
+      distrobox-tui
       podman-tui
       podman-compose
     ];
