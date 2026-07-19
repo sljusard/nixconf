@@ -73,9 +73,11 @@
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      # kwin is multi-GPU aware; weston only opens the iGPU, leaving the
-      # external monitor (on the Nvidia GPU) black when the lid is closed
       wayland.compositor = "kwin";
+      extraPackages = with pkgs; [
+        kdePackages.qtmultimedia
+      ];
+      theme = "sddm-astronaut-theme";
     };
 
     networking.networkmanager.enable = true;
@@ -152,6 +154,7 @@
       sqlite
       pandoc
       wl-clipboard
+      sddm-astronaut
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
