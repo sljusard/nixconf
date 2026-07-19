@@ -23,10 +23,16 @@ input {
 }
 
 layout {
+    background-color "transparent"
     gaps 5
     focus-ring {
         width 2
     }
+}
+
+window-rule {
+    geometry-corner-radius 6
+    clip-to-geometry true
 }
 
 binds {

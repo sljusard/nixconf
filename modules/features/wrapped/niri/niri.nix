@@ -13,6 +13,13 @@
 
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
+        layer-rules = [
+          {
+            matches = [ { namespace = "^noctalia-wallpaper"; } ];
+            place-within-backdrop = true;
+          }
+        ];
+
         binds = {
           "Mod+Return".spawn-sh = footExe;
           "Mod+S".spawn-sh = "${rofiExe} -show drun";
