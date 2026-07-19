@@ -152,10 +152,7 @@
       sqlite
       pandoc
       wl-clipboard
-      rapidraw
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-      cargo
-      rustc
   ];
 
   fonts.packages = [
@@ -179,6 +176,11 @@
     doom = "~/.config/emacs/bin/doom emacs 2>/dev/null & disown";
     dvr = "distrobox enter resolve -- resolve-launch";
   };
+
+  environment.etc."gitconfig".text = ''
+    [safe]
+      directory = /mnt/nas/games/installers
+  '';
 
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 11345 ];
