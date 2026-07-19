@@ -45,6 +45,8 @@
     nix.gc.options = "--delete-older-than 7d";
     nix.settings.auto-optimise-store = true;
 
+    powerManagement.cpuFreqGovernor = "performance";
+
     # GPU settings
     hardware.graphics.enable = true;
 
@@ -65,6 +67,8 @@
     };
 
     services.xserver.videoDrivers = [ "nvidia" "modesetting" ];
+
+    hardware.nvidia-container-toolkit.enable = true;
 
     services.displayManager = {
       plasma-login-manager.enable = true;
@@ -112,7 +116,7 @@
     users.users.cypher = {
       isNormalUser = true;
       description = "Cypher";
-      extraGroups = [ "input" "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" ];
+      extraGroups = [ "input" "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" "libvirtd" ];
       packages = with pkgs; [
         qbittorrent
         vlc
@@ -120,7 +124,6 @@
         telegram-desktop
         gimp
         obsidian
-        davinci-resolve
         vesktop
         libreoffice-qt
         cliamp
@@ -149,14 +152,17 @@
       sqlite
       pandoc
       wl-clipboard
+      rapidraw
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+      cargo
+      rustc
   ];
 
   fonts.packages = [
     pkgs.monocraft
   ]
   ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
-
+  
   programs.yazi.enable = true;
   programs.lazygit.enable = true;
 
@@ -171,6 +177,7 @@
     rebuild = "sudo nixos-rebuild switch --flake .#noosphere";
     niri-displayfix = "niri msg output HDMI-A-1 mode 2560x1440@143.996";
     doom = "~/.config/emacs/bin/doom emacs 2>/dev/null & disown";
+    dvr = "distrobox enter resolve -- resolve-launch";
   };
 
   networking.firewall.enable = true;
