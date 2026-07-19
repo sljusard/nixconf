@@ -70,9 +70,12 @@
 
     hardware.nvidia-container-toolkit.enable = true;
 
-    services.displayManager = {
-      plasma-login-manager.enable = true;
-      defaultSession = "niri";
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      # kwin is multi-GPU aware; weston only opens the iGPU, leaving the
+      # external monitor (on the Nvidia GPU) black when the lid is closed
+      wayland.compositor = "kwin";
     };
 
     networking.networkmanager.enable = true;
@@ -90,10 +93,7 @@
     services.xserver.xkb = {
       layout = "us,us,ru";
       variant = ",colemak,";
-      options = "
-        grp:alt_shift_toggle,
-	      compose:rctrl
-      ";
+      options = "grp:alt_shift_toggle,compose:rctrl";
     };
 
     time.timeZone = "Europe/Moscow";
@@ -129,7 +129,7 @@
         cliamp
         jmtpfs
         anki
-        qtpass
+        digikam
       ];
     };
 
