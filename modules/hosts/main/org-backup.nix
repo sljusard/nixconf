@@ -1,13 +1,14 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.org-backup = { pkgs, config, ... }: let
+      selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
       gitUser = "cypher";
       deployKey = "/home/${gitUser}/.ssh/deploy-key-org-files";
       repoPath = "/home/${gitUser}/org";
   in {
     systemd.services."org-backup" = {
       description = "Auto-commit and push all changes in org Git repo";
-      path = [ pkgs.git pkgs.openssh ];
+      path = [ selfpkgs.myGit config.programs.ssh.package ]; # myGit declared in git.nix, carries baked-in identity
       script = ''
         set -eu
         export GIT_SSH_COMMAND="ssh -i ${deployKey} -o IdentitiesOnly=yes"
