@@ -56,7 +56,7 @@
       {
         "type": "uptime",
         "key": "{#90}│ {#93}Uptime      {#90}│",
-        "format": "{$1}{?days}{days} Days + {?}{hours}:{minutes}:{seconds}"
+        "format": "{$1}{?days}{days} days, {?}{hours} hours, {minutes} mins"
       },
       {
         "type": "cpu",
