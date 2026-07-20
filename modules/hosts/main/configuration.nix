@@ -30,6 +30,14 @@
       options = [ "defaults" "nofail" ];
     };
 
+    fileSystems."/mnt/warehouse" = {
+      device = "192.168.1.10:/nfs/warehouse";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
+    };
+
+    services.rpcbind.enable = true;
+
     boot.kernelPackages = pkgs.linuxPackages;
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
