@@ -19,92 +19,92 @@
       },
       {
         "type": "title",
-        "key": "{#90}│ {#92}User        {#90}│",
+        "key": "{#90}│ {##5277C3}User        {#90}│",
         "format": "{$1}{user-name}  {#2}[{home-dir}]"
       },
       {
         "type": "users",
-        "key": "{#90}│ {#92}Users       {#90}│",
+        "key": "{#90}│ {##5277C3}Users       {#90}│",
         "myselfOnly": false,
         "format": "{$1}{1}@{host-name}{/host-name}localhost{/}{?client-ip}  {#2}[IP:{client-ip}]{?}  [Login time: {login-time}]"
       },
       {
         "type": "datetime",
-        "key": "{#90}│ {#92}Datetime    {#90}│",
+        "key": "{#90}│ {##5277C3}Datetime    {#90}│",
         "format": "{$1}{year}-{month-pretty}-{day-in-month} {hour-pretty}:{minute-pretty}:{second-pretty}  {#2}[{weekday}] [W{week}] [UTC{offset-from-utc}]"
       },
       {
         "type": "title",
-        "key": "{#90}│ {#93}Host        {#90}│",
+        "key": "{#90}│ {##7EBAE4}Host        {#90}│",
         "format": "{$1}{host-name}"
       },
       {
         "type": "host",
-        "key": "{#90}│ {#93}Machine     {#90}│",
+        "key": "{#90}│ {##7EBAE4}Machine     {#90}│",
         "format": "{$1}{name}  {#2}{version}"
       },
       {
         "type": "os",
-        "key": "{#90}│ {#93}OS          {#90}│",
+        "key": "{#90}│ {##7EBAE4}OS          {#90}│",
         "format": "{$1}{?pretty-name}{pretty-name}{?}{/pretty-name}{name}{/} {codename}  {#2}[v{version}] [{arch}]"
       },
       {
         "type": "kernel",
-        "key": "{#90}│ {#93}Kernel      {#90}│",
+        "key": "{#90}│ {##7EBAE4}Kernel      {#90}│",
         "format": "{$1}{sysname}  {#2}[v{release}]"
       },
       {
         "type": "uptime",
-        "key": "{#90}│ {#93}Uptime      {#90}│",
+        "key": "{#90}│ {##7EBAE4}Uptime      {#90}│",
         "format": "{$1}{?days}{days} days, {?}{hours} hours, {minutes} mins"
       },
       {
         "type": "cpu",
-        "key": "{#90}│ {#91}CPU         {#90}│",
+        "key": "{#90}│ {##5277C3}CPU         {#90}│",
         "showPeCoreCount": true,
         "temp": true,
         "format": "{$1}{name}  {#2}[C:{core-types}] [{freq-max}]"
       },
       {
         "type": "gpu",
-        "key": "{#90}│ {#91}GPU         {#90}│",
+        "key": "{#90}│ {##5277C3}GPU         {#90}│",
         "detectionMethod": "auto",
         "driverSpecific": true,
         "format": "{$1}{name}  {#2}[C:{core-count}]{?frequency} [{frequency}]{?} {#2}[{type}]"
       },
       {
         "type": "memory",
-        "key": "{#90}│ {#91}Memory      {#90}│",
+        "key": "{#90}│ {##5277C3}Memory      {#90}│",
         "format": "{$1}{used} / {total} ({percentage})"
       },
       {
         "type": "disk",
-        "key": "{#90}│ {#91}Disk        {#90}│",
+        "key": "{#90}│ {##5277C3}Disk        {#90}│",
         "format": "{$1}{size-used} / {size-total} ({size-percentage})"
       },
       {
         "type": "poweradapter",
-        "key": "{#90}│ {#91}Power       {#90}│",
+        "key": "{#90}│ {##5277C3}Power       {#90}│",
         "format": "{$1}{name}"
       },
       {
         "type": "terminal",
-        "key": "{#90}│ {#95}Terminal    {#90}│",
+        "key": "{#90}│ {##7EBAE4}Terminal    {#90}│",
         "format": "{$1}{pretty-name}  {#2}[{version}] [PID:{pid}]"
       },
       {
         "type": "terminalfont",
-        "key": "{#90}│ {#95}Font        {#90}│",
+        "key": "{#90}│ {##7EBAE4}Font        {#90}│",
         "format": "{$1}{name}  {#2}[{size}]"
       },
       {
         "type": "shell",
-        "key": "{#90}│ {#95}Shell       {#90}│",
+        "key": "{#90}│ {##7EBAE4}Shell       {#90}│",
         "format": "{$1}{pretty-name}  {#2}[v{version}] [PID:{pid}]"
       },
       {
         "type": "localip",
-        "key": "{#90}│ {#94}Local IPv4  {#90}│",
+        "key": "{#90}│ {##5277C3}Local IPv4  {#90}│",
         "showPrefixLen": true,
         "showIpv4": true,
         "showIpv6": false,
@@ -113,7 +113,7 @@
       },
       {
         "type": "localip",
-        "key": "{#90}│ {#94}Local IPv6  {#90}│",
+        "key": "{#90}│ {##5277C3}Local IPv6  {#90}│",
         "showPrefixLen": true,
         "showIpv4": false,
         "showIpv6": true,
@@ -122,13 +122,13 @@
       },
       {
         "type": "publicip",
-        "key": "{#90}│ {#94}Public IPv4 {#90}│",
+        "key": "{#90}│ {##5277C3}Public IPv4 {#90}│",
         "ipv6": false,
         "format": "{$1}{ip}  {#2}[{location}]"
       },
       {
         "type": "publicip",
-        "key": "{#90}│ {#94}Public IPv6 {#90}│",
+        "key": "{#90}│ {##5277C3}Public IPv6 {#90}│",
         "ipv6": true,
         "format": "{$1}{ip}  {#2}[{location}]"
       },
