@@ -16,6 +16,7 @@
       # Host-specific modules
       noosphereHardware
       noosphereSSH
+      org-backup
     ];
 
     boot.loader.systemd-boot.enable = true;
