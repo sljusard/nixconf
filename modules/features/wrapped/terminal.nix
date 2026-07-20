@@ -6,14 +6,14 @@
       package = self'.packages.myFish;
       runtimeInputs = [
         pkgs.wget
-	pkgs.fastfetch
-	pkgs.tmux
-	pkgs.rsync
-	pkgs.btop
-	pkgs.tree
-	pkgs.nmap
-	pkgs.psmisc
-	pkgs.ffmpeg-full
+        self'.packages.myFastfetch
+        pkgs.tmux
+        pkgs.rsync
+        pkgs.btop
+        pkgs.tree
+        pkgs.nmap
+        pkgs.psmisc
+        pkgs.ffmpeg-full
       ];
     };
   };

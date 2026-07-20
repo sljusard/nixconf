@@ -9,7 +9,7 @@
       runtimeInputs = [
         selfpkgs.myNeovim
         pkgs.wget
-        pkgs.fastfetch
+        selfpkgs.myFastfetch
         pkgs.tmux
         pkgs.rsync
         pkgs.btop
