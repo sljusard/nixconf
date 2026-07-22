@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "dvr-patched": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784726443,
+        "narHash": "sha256-3iMrCNahayX/lX7YD4tyzIGQkBlChnNa148uOexXidg=",
+        "ref": "refs/heads/main",
+        "rev": "0383314776a84fc688583196e8ba5937d11cdf82",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://git.sljusard.com/sljusard/dvr-patched-flake.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.sljusard.com/sljusard/dvr-patched-flake.git"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -118,6 +138,7 @@
     },
     "root": {
       "inputs": {
+        "dvr-patched": "dvr-patched",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
