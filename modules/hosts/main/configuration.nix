@@ -182,6 +182,8 @@
   programs.thunderbird.enable = true;
   services.protonmail-bridge.enable = true;
 
+  programs.labwc.enable = true;
+
   programs.fish.shellAliases = {
     winboot = "sudo bootctl set-oneshot auto-windows && reboot";
     rebuild = "sudo nixos-rebuild switch --flake .#noosphere";
