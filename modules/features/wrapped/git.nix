@@ -3,8 +3,8 @@
   flake.nixosModules.myGit = { pkgs, lib, config, ... }: {
     config = {
       settings = {
-        user.name = "Denis Sliusar";
-	user.email = "sljusarde@gmail.com";
+        user.name = "Denis Slyusar";
+        user.email = "sljusarde@gmail.com";
         init.defaultBranch = "main";
       };
     };
