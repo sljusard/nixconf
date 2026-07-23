@@ -138,7 +138,6 @@
         vesktop
         libreoffice-qt
         cliamp
-        jmtpfs
         anki
         digikam
       ];
