@@ -10,7 +10,7 @@
         selfpkgs.myNeovim
         pkgs.wget
         selfpkgs.myFastfetch
-        pkgs.tmux
+        selfpkgs.myTmux
         pkgs.zellij
         pkgs.rsync
         pkgs.btop
