@@ -38,7 +38,21 @@ window-rule {
 // Float every DaVinci Resolve window...
 window-rule {
     match app-id="^resolve$"
+    exclude title="^DaVinci Resolve"
+
     open-floating true
+
+    focus-ring {
+        off
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        off
+    }
 }
 
 // ...except the main editor window, which stays tiled.
