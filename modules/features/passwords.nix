@@ -7,10 +7,9 @@
       settings.default-cache-ttl = 300;
     };
 
-    environment.systemPackages = with pkgs; [
-      pass
-      passExtensions.pass-otp
-      gopass
+    environment.systemPackages = [
+      (pkgs.pass.withExtensions (exts: [ exts.pass-otp ]))
+      pkgs.gopass
     ];
   };
   
