@@ -11,6 +11,7 @@
         pkgs.wget
         selfpkgs.myFastfetch
         pkgs.tmux
+        pkgs.zellij
         pkgs.rsync
         pkgs.btop
         pkgs.tree
