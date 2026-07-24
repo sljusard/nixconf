@@ -35,6 +35,18 @@ window-rule {
     clip-to-geometry true
 }
 
+// Float every DaVinci Resolve window...
+window-rule {
+    match app-id="^resolve$"
+    open-floating true
+}
+
+// ...except the main editor window, which stays tiled.
+window-rule {
+    match app-id="^resolve$" title="^DaVinci Resolve"
+    open-floating false
+}
+
 binds {
     // Ctrl+Alt+1 { switch-layout "0"; }
     // Ctrl+Alt+2 { switch-layout "1"; }
