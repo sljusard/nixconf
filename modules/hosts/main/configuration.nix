@@ -22,22 +22,6 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    boot.supportedFilesystems = [ "nfs" ];
-
-    fileSystems."/mnt/storage" = { 
-      device = "/dev/disk/by-uuid/ececae3e-ecff-48a1-92c7-e0c0b7f45e78";
-      fsType = "ext4";
-      options = [ "defaults" "nofail" ];
-    };
-
-    fileSystems."/mnt/warehouse" = {
-      device = "192.168.1.10:/nfs/warehouse";
-      fsType = "nfs";
-      options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
-    };
-
-    services.rpcbind.enable = true;
-
     boot.kernelPackages = pkgs.linuxPackages;
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -45,7 +29,7 @@
     networking.hostName = "noosphere";
 
     # Automatic upgrading
-    system.autoUpgrade.enable = true;
+    system.autoUpgrade.enable = false;
     system.autoUpgrade.dates = "weekly";
 
     # Automatic cleanup
@@ -144,62 +128,97 @@
       ];
     };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-40.10.5"
-  ];
+    environment.systemPackages = with pkgs; [
+        emacs
+        exfat
+        element-desktop
+        warehouse
+        darktable
+        udiskie
+        lynx
+        filezilla
+        naps2
+        tree-sitter
+        gcc
+        sqlite
+        pandoc
+        wl-clipboard
+        sddm-astronaut
+        inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+        inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
 
-  environment.systemPackages = with pkgs; [
-      emacs
-      exfat
-      element-desktop
-      warehouse
-      darktable
-      udiskie
-      lynx
-      filezilla
-      naps2
-      tree-sitter
-      gcc
-      sqlite
-      pandoc
-      wl-clipboard
-      sddm-astronaut
-      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
+    fonts.packages = [
+      pkgs.monocraft
+    ]
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
-  fonts.packages = [
-    pkgs.monocraft
-  ]
-  ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
-  
-  programs.yazi.enable = true;
-  programs.lazygit.enable = true;
+    # ========================= #
+    # === FILESYSTEM MOUNTS === #
+    # ========================= #
 
-  services.flatpak.enable = true;
-  services.lact.enable = true;
+    # Second SSD
+    fileSystems."/mnt/storage" = { 
+      device = "/dev/disk/by-uuid/ececae3e-ecff-48a1-92c7-e0c0b7f45e78";
+      fsType = "ext4";
+      options = [ "defaults" "nofail" ];
+    };
 
-  programs.thunderbird.enable = true;
-  services.protonmail-bridge.enable = true;
+    # NAS mount
+    boot.supportedFilesystems = [ "nfs" ];
+    services.rpcbind.enable = true;
 
-  programs.labwc.enable = true;
+    fileSystems."/mnt/warehouse" = {
+      device = "192.168.1.10:/nfs/warehouse";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
+    };
 
-  programs.fish.shellAliases = {
-    winboot = "sudo bootctl set-oneshot auto-windows && reboot";
-    rebuild = "sudo nixos-rebuild switch --flake .#noosphere";
-    niri-displayfix = "niri msg output HDMI-A-1 mode 2560x1440@143.996";
-    doom = "~/.config/emacs/bin/doom emacs 2>/dev/null & disown";
-    dvr = "distrobox enter resolve -- resolve-launch";
-  };
+    # ====================== #
+    # === SHELL SETTINGS === #
+    # ====================== #
 
-  environment.etc."gitconfig".text = ''
-    [safe]
-      directory = /mnt/nas/games/installers
-  '';
+    # programs.zsh.enable = true;
+    # users.defaultUserShell = pkgs.zsh;
 
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 11345 ];
+    programs.fish.shellAliases = {
+      winboot = "sudo bootctl set-oneshot auto-windows && reboot";
+      rebuild = "sudo nixos-rebuild switch --flake .#noosphere";
+      niri-displayfix = "niri msg output HDMI-A-1 mode 2560x1440@143.996";
+      doom = "~/.config/emacs/bin/doom emacs 2>/dev/null & disown";
+      dvr = "distrobox enter resolve -- resolve-launch";
+    };
 
-  system.stateVersion = "25.11"; 
+
+    networking.firewall.enable = true;
+    networking.firewall.allowedTCPPorts = [ 11345 ];
+
+    # ====================== #
+    # === OTHER SETTINGS === #
+    # ====================== #
+
+    # Obsidian breaks nixos-rebuild without this
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-40.10.5"
+    ];
+
+    # Allow Git to push from mounted NAS
+    environment.etc."gitconfig".text = ''
+      [safe]
+        directory = /mnt/nas/games/installers
+    '';
+
+    programs.labwc.enable = true;
+
+    programs.yazi.enable = true;
+    programs.lazygit.enable = true;
+
+    services.flatpak.enable = true;
+    services.lact.enable = true;
+
+    programs.thunderbird.enable = true;
+    services.protonmail-bridge.enable = true;
+
+    system.stateVersion = "25.11"; # Do not touch!
   };
 }
