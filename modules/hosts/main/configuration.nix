@@ -197,11 +197,6 @@
     # === OTHER SETTINGS === #
     # ====================== #
 
-    # Obsidian breaks nixos-rebuild without this
-    nixpkgs.config.permittedInsecurePackages = [
-      "electron-40.10.5"
-    ];
-
     # Allow Git to push from mounted NAS
     environment.etc."gitconfig".text = ''
       [safe]
