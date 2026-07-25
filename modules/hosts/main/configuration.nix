@@ -3,6 +3,118 @@
   flake.nixosModules.noosphereConfiguration = { pkgs, lib, config, ... }: let
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
+
+    # ======================== #
+    # === NixOS ESSENTIALS === #
+    # ======================== #
+
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+
+    boot.kernelPackages = pkgs.linuxPackages;
+
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    networking.hostName = "noosphere";
+    networking.networkmanager.enable = true;
+    networking.wireless.enable = true;
+
+    hardware.bluetooth.enable = true;
+
+    # =================== #
+    # === AUTOMATIONS === #
+    # =================== #
+
+    # Automatic upgrading
+    system.autoUpgrade.enable = false;
+    system.autoUpgrade.dates = "weekly";
+
+    # Automatic cleanup
+    nix.gc.automatic = true;
+    nix.gc.dates = "daily";
+    nix.gc.options = "--delete-older-than 7d";
+    nix.settings.auto-optimise-store = true;
+
+    # ================ #
+    # === HARDWARE === #
+    # ================ #
+
+    powerManagement.cpuFreqGovernor = "performance";
+
+    hardware.graphics.enable = true;
+
+    # Nvidia GPU settings
+    hardware.nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+    };
+
+    hardware.nvidia.prime = {
+      sync.enable = true;
+      nvidiaBusId = "PCI:1:0:0";
+      intelBusId = "PCI:0:2:0";
+    };
+
+    services.xserver.videoDrivers = [ "nvidia" "modesetting" ];
+    hardware.nvidia-container-toolkit.enable = true;
+
+    # ===================== #
+    # === LOGIN MANAGER === #
+    # ===================== #
+
+    services.displayManager.defaultSession = "niri";
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      wayland.compositor = "kwin";
+      extraPackages = with pkgs; [
+        kdePackages.qtmultimedia
+      ];
+      theme = "sddm-astronaut-theme";
+    };
+
+    # ================ #
+    # === KEYBOARD === #
+    # ================ #
+
+    services.xserver.xkb = {
+      layout = "us,us,ru";
+      variant = ",colemak,";
+      options = "grp:alt_shift_toggle,compose:rctrl";
+    };
+
+    # ===================== #
+    # === USER SETTINGS === #
+    # ===================== #
+
+    users.users.cypher = {
+      isNormalUser = true;
+      description = "Cypher";
+      extraGroups = [ "input" "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" "libvirtd" ];
+      packages = with pkgs; [
+        vlc
+        obs-studio
+        telegram-desktop
+        gimp
+        obsidian
+        vesktop
+        libreoffice-qt
+        cliamp
+        anki
+        digikam
+      ];
+    };
+
+    # ========================== #
+    # === MODULES & PACKAGES === #
+    # ========================== #
+    
+    nixpkgs.config.allowUnfree = true;
+
     imports = with self.nixosModules; [
       gaming
       audio
@@ -19,117 +131,9 @@
       org-backup
     ];
 
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-
-    boot.kernelPackages = pkgs.linuxPackages;
-
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-    networking.hostName = "noosphere";
-
-    # Automatic upgrading
-    system.autoUpgrade.enable = false;
-    system.autoUpgrade.dates = "weekly";
-
-    # Automatic cleanup
-    nix.gc.automatic = true;
-    nix.gc.dates = "daily";
-    nix.gc.options = "--delete-older-than 7d";
-    nix.settings.auto-optimise-store = true;
-
-    powerManagement.cpuFreqGovernor = "performance";
-
-    # GPU settings
-    hardware.graphics.enable = true;
-
-    hardware.nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = true;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-    };
-
-    hardware.nvidia.prime = {
-      sync.enable = true;
-
-      nvidiaBusId = "PCI:1:0:0";
-      intelBusId = "PCI:0:2:0";
-    };
-
-    services.xserver.videoDrivers = [ "nvidia" "modesetting" ];
-
-    hardware.nvidia-container-toolkit.enable = true;
-
-    services.displayManager.defaultSession = "niri";
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      wayland.compositor = "kwin";
-      extraPackages = with pkgs; [
-        kdePackages.qtmultimedia
-      ];
-      theme = "sddm-astronaut-theme";
-    };
-
-    networking.networkmanager.enable = true;
-    networking.wireless.enable = true;
-
-    hardware.bluetooth.enable = true;
-    services.udisks2.enable = true;
-
-    services.printing.enable = true;
-    hardware.sane.enable = true;
-    hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
-    services.avahi.enable = true;
-    services.avahi.nssmdns4 = true;
-
-    services.xserver.xkb = {
-      layout = "us,us,ru";
-      variant = ",colemak,";
-      options = "grp:alt_shift_toggle,compose:rctrl";
-    };
-
-    time.timeZone = "Europe/Moscow";
-
-    i18n.defaultLocale = "en_IE.UTF-8";
-    i18n.extraLocaleSettings = {
-      LC_ADDRESS = "ru_RU.UTF-8";
-      LC_IDENTIFICATION = "ru_RU.UTF-8";
-      LC_MEASUREMENT = "ru_RU.UTF-8";
-      LC_MONETARY = "ru_RU.UTF-8";
-      LC_NAME = "ru_RU.UTF-8";
-      LC_NUMERIC = "ru_RU.UTF-8";
-      LC_PAPER = "ru_RU.UTF-8";
-      LC_TELEPHONE = "ru_RU.UTF-8";
-      LC_TIME = "ru_RU.UTF-8";
-    };
-
-    nixpkgs.config.allowUnfree = true;
-
-    users.users.cypher = {
-      isNormalUser = true;
-      description = "Cypher";
-      extraGroups = [ "input" "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" "libvirtd" ];
-      packages = with pkgs; [
-        qbittorrent
-        vlc
-        obs-studio
-        telegram-desktop
-        gimp
-        obsidian
-        vesktop
-        libreoffice-qt
-        cliamp
-        anki
-        digikam
-      ];
-    };
-
     environment.systemPackages = with pkgs; [
         emacs
+        qbittorrent
         exfat
         element-desktop
         warehouse
@@ -189,13 +193,39 @@
       dvr = "distrobox enter resolve -- resolve-launch";
     };
 
-
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 11345 ];
+
+    # ===================== #
+    # === TIME & LOCALE === #
+    # ===================== #
+
+    time.timeZone = "Europe/Moscow";
+
+    i18n.defaultLocale = "en_IE.UTF-8";
+    i18n.extraLocaleSettings = {
+      LC_ADDRESS = "ru_RU.UTF-8";
+      LC_IDENTIFICATION = "ru_RU.UTF-8";
+      LC_MEASUREMENT = "ru_RU.UTF-8";
+      LC_MONETARY = "ru_RU.UTF-8";
+      LC_NAME = "ru_RU.UTF-8";
+      LC_NUMERIC = "ru_RU.UTF-8";
+      LC_PAPER = "ru_RU.UTF-8";
+      LC_TELEPHONE = "ru_RU.UTF-8";
+      LC_TIME = "ru_RU.UTF-8";
+    };
 
     # ====================== #
     # === OTHER SETTINGS === #
     # ====================== #
+
+    services.udisks2.enable = true;
+
+    services.printing.enable = true;
+    hardware.sane.enable = true;
+    hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
+    services.avahi.enable = true;
+    services.avahi.nssmdns4 = true;
 
     # Allow Git to push from mounted NAS
     environment.etc."gitconfig".text = ''
