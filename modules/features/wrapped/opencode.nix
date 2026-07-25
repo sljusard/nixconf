@@ -5,8 +5,8 @@
       settings = {
         permission = {
           edit = "ask";
-	  bash = "ask";
-	};
+          bash = "ask";
+        };
       };
     };
   };

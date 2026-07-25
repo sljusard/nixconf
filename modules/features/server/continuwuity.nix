@@ -27,8 +27,6 @@
       };
     };
 
-#    services.caddy.enable = true;
-
     services.caddy.virtualHosts."matrix.econadzor.org".extraConfig = ''
       reverse_proxy 127.0.0.1:6167
     '';

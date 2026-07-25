@@ -4,7 +4,7 @@
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
     programs.niri.enable = true;
-    programs.niri.package = selfpkgs.myNiri; # Declared in niri.nix
+    programs.niri.package = selfpkgs.myNiri; # Declared in niri/niri.nix
 
     programs.fish.enable = true;
     programs.fish.package = selfpkgs.myEnvironment; # Declared in environment.nix
@@ -13,9 +13,9 @@
     programs.git.package = selfpkgs.myGit; # Declared in git.nix
 
     environment.systemPackages = [
-      selfpkgs.myAlacritty # Declared in alacritty.nix
+      # selfpkgs.myAlacritty
       selfpkgs.myFoot # Declared in foot.nix
-      selfpkgs.myRofi
+      selfpkgs.myRofi # Declared in rofi/rofi.nix
     ];
   };
 

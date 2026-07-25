@@ -126,30 +126,28 @@
       virtualisation
 
       # Host-specific modules
-      noosphereHardware
       noosphereSSH
       org-backup
+      noosphereHardware # Always keep this one!
     ];
 
     environment.systemPackages = with pkgs; [
-        emacs
-        qbittorrent
-        exfat
-        element-desktop
-        warehouse
-        darktable
-        udiskie
-        lynx
-        filezilla
-        naps2
-        tree-sitter
-        gcc
-        sqlite
-        pandoc
-        wl-clipboard
-        sddm-astronaut
-        inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-        inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
+      emacs
+      qbittorrent
+      exfat
+      warehouse
+      darktable
+      udiskie
+      filezilla
+      naps2
+      tree-sitter
+      gcc
+      sqlite
+      pandoc
+      wl-clipboard
+      sddm-astronaut
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     fonts.packages = [
