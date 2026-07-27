@@ -10,6 +10,8 @@
     environment.systemPackages = [
       (pkgs.pass.withExtensions (exts: [ exts.pass-otp ]))
       pkgs.gopass
+      pkgs.pwgen
+      pkgs.openssl
     ];
   };
   
