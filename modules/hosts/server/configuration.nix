@@ -115,8 +115,12 @@
       reverse_proxy 127.0.0.1:3000
     '';
 
+    services.caddy.virtualHosts."test.econadzor.org".extraConfig = ''
+      reverse_proxy 127.0.0.1:8340
+    '';
+
     networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 80 443 10000 3000 3022 4440 ];
+    networking.firewall.allowedTCPPorts = [ 80 443 10000 3000 3022 4440 8340 ];
     
     networking.hosts = {
       "127.0.0.1" = [ 
@@ -124,6 +128,7 @@
         "matrix.econadzor.org"
         "livekit.econadzor.org"
         "grafana.sljusard.com"
+        "test.econadzor.org"
       ];
     };
   
