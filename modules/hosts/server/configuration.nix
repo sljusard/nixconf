@@ -74,7 +74,7 @@
     users.users.sljusard = {
       isNormalUser = true;
       description = "Denis Sliusar";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
       packages = with pkgs; [
       ];
     };
@@ -82,12 +82,17 @@
     nixpkgs.config.allowUnfree = true;
 
     environment.systemPackages = with pkgs; [
+      openssl
+      jq
+      gawk
     ];
 
     programs.yazi.enable = true;
 
     programs.git.enable = true;
     programs.git.package = selfpkgs.myGit;
+
+    virtualisation.docker.enable = true;
 
     programs.fish.enable = true;
     programs.fish.package = selfpkgs.myEnvironment;
