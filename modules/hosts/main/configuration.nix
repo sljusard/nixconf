@@ -104,7 +104,7 @@
         vesktop
         libreoffice-qt
         cliamp
-        anki
+        anki-bin
         digikam
         element-desktop
       ];
