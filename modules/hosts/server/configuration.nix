@@ -135,6 +135,14 @@
       reverse_proxy 127.0.0.1:8340
     '';
 
+    services.caddy.virtualHosts."vw.econadzor.org".extraConfig = ''
+      reverse_proxy 127.0.0.1:3800
+    '';
+
+    services.caddy.virtualHosts."sljussar.de".extraConfig = ''
+      reverse_proxy 127.0.0.1:3100
+    '';
+
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 80 443 10000 3022 4440 8340 
       25 465 587 143 993 110 995 4190 873 53 ];
