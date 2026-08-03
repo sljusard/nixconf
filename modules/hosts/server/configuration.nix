@@ -120,13 +120,26 @@
       reverse_proxy 127.0.0.1:3000
     '';
 
-    services.caddy.virtualHosts."test.econadzor.org".extraConfig = ''
+    services.caddy.virtualHosts."mail.econadzor.org".extraConfig = ''
+      reverse_proxy https://127.0.0.1:8443 {
+        transport http {
+          tls_insecure_skip_verify
+        }
+        header_up Host {host}
+        header_up X-Forwarded-Proto https
+        header_up X-Forwarded-For {remote_host}
+      }
+    '';
+
+    services.caddy.virtualHosts."inbox.econadzor.org".extraConfig = ''
       reverse_proxy 127.0.0.1:8340
     '';
 
     networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 80 443 10000 3000 3022 4440 8340 ];
-    
+    networking.firewall.allowedTCPPorts = [ 80 443 10000 3022 4440 8340 
+      25 465 587 143 993 110 995 4190 873 53 ];
+    networking.firewall.allowedUDPPorts = [ 53 11335 11445 ];
+
     networking.hosts = {
       "127.0.0.1" = [ 
         "econadzor.org" 
