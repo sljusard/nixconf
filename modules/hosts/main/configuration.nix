@@ -106,6 +106,7 @@
         cliamp
         anki
         digikam
+        element-desktop
       ];
     };
 
@@ -146,6 +147,8 @@
       pandoc
       wl-clipboard
       sddm-astronaut
+      tetex
+      dmidecode
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
