@@ -144,9 +144,11 @@
     '';
 
     networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 80 443 10000 3022 4440 8340 
-      25 465 587 143 993 110 995 4190 873 53 ];
-    networking.firewall.allowedUDPPorts = [ 53 11335 11445 ];
+    networking.firewall.allowedTCPPorts = [ 80 443 3022 4440 
+      25 465 587 # SMTP
+      143 993 # IMAP
+      110 995 # POP3 
+      4190 # Sieve ];
 
     networking.hosts = {
       "127.0.0.1" = [ 
