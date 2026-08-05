@@ -31,10 +31,6 @@
       reverse_proxy 127.0.0.1:6167
     '';
 
-    services.caddy.virtualHosts."matrix.econadzor.org:8448".extraConfig = ''
-      reverse_proxy 127.0.0.1:6167
-    '';
-
     services.caddy.virtualHosts."matrix.econadzor.org:443".extraConfig = ''
       reverse_proxy 127.0.0.1:6167
     '';
@@ -52,7 +48,7 @@
       reverse_proxy 127.0.0.1:7880
      '';
 
-    networking.firewall.allowedTCPPorts = [ 8448 7881 ];
+    networking.firewall.allowedTCPPorts = [ 7881 ];
     networking.firewall.allowedUDPPortRanges = [ 
       { from = 50100; to = 50200; } 
       { from = 50300; to = 50400; }
