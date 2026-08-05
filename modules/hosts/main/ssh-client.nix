@@ -15,10 +15,22 @@
           User sljusard
           SetEnv TERM=xterm-256color
 
-        Host vpnserver
+        Host vienna-alpha
           Hostname 132.243.254.68
           Port 22
           User root
+
+        Host prague-alpha
+          Hostname 37.205.15.215
+          Port 4572
+          User sljusard
+          SetEnv TERM=xterm-256color
+
+        Host hetzner-box-1
+          Hostname u645105.your-storagebox.de
+          Port 23
+          User u645105
+          ProxyJump prague-alpha
      ";
      startAgent = true;
     };
