@@ -150,6 +150,7 @@
       dmidecode
       filezilla
       winboat
+      waydroid-helper
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
@@ -249,6 +250,9 @@
     nixpkgs.config.permittedInsecurePackages = [
       "electron-40.10.5"
     ];
+
+    virtualisation.waydroid.enable = true;
+    virtualisation.waydroid.package = pkgs.waydroid-nftables;
 
     system.stateVersion = "25.11"; # Do not touch!
   };
