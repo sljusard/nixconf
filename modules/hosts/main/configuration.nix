@@ -139,7 +139,6 @@
       warehouse
       darktable
       udiskie
-      filezilla
       naps2
       tree-sitter
       gcc
@@ -149,6 +148,8 @@
       sddm-astronaut
       tetex
       dmidecode
+      filezilla
+      winboat
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
@@ -244,6 +245,10 @@
 
     programs.thunderbird.enable = true;
     services.protonmail-bridge.enable = true;
+
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-40.10.5"
+    ];
 
     system.stateVersion = "25.11"; # Do not touch!
   };
