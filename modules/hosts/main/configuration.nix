@@ -102,7 +102,8 @@
         gimp
         obsidian
         vesktop
-        libreoffice-qt
+        # libreoffice-qt
+        onlyoffice-desktopeditors
         cliamp
         anki-bin
         digikam
@@ -151,6 +152,7 @@
       filezilla
       winboat
       waydroid-helper
+      fontconfig
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
