@@ -116,6 +116,14 @@
       reverse_proxy 127.0.0.1:10000
     '';
 
+    services.caddy.virtualHosts."wiki.econadzor.org".extraConfig = ''
+      reverse_proxy 127.0.0.1:3200
+    '';
+
+    services.caddy.virtualHosts."stream.econadzor.com".extraConfig = ''
+      reverse_proxy 127.0.0.1:8085
+    '';
+
     services.caddy.virtualHosts."git.sljusard.com".extraConfig = ''
       reverse_proxy 127.0.0.1:3000
     '';
@@ -150,8 +158,11 @@
       143 993 # IMAP
       110 995 # POP3 
       4190 # Sieve 
-      3022 4440 8006 3389 # Other
+      3022 4440 3389 # Other
+      1935 # Owncast
     ];
+
+    networking.firewall.allowedUDPPorts = [ 3389 8189 ];
 
     networking.hosts = {
       "127.0.0.1" = [ 
