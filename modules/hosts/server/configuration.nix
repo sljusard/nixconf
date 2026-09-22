@@ -151,6 +151,10 @@
       reverse_proxy 127.0.0.1:3100
     '';
 
+    services.caddy.virtualHosts."chat.econadzor.org".extraConfig = ''
+      reverse_proxy 127.0.0.1:6100
+    '';
+
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 
       80 443 # Caddy
