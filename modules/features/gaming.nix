@@ -20,6 +20,7 @@
       pkgs.protonplus
       pkgs.lutris
       pkgs.heroic
+      pkgs.vintagestory
     ];
   };
   

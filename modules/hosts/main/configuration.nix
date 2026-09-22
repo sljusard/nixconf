@@ -108,7 +108,6 @@
         anki-bin
         digikam
         element-desktop
-        vintagestory
       ];
     };
 
