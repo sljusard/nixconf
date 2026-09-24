@@ -130,7 +130,6 @@
       # Host-specific modules
       noosphereSSH
       org-backup
-      forgejo-backup
       noosphereHardware # Always keep this one!
     ];
 
