@@ -13,11 +13,23 @@
       ecoserverSSH
     ];
 
+    # ======================== #
+    # === NixOS ESSENTIALS === #
+    # ======================== #
+
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
+    networking.hostName = "ecoserver";
+
+    networking.networkmanager.enable = true;
+
+    # =================== # 
+    # === AUTOMATIONS === #
+    # =================== #
+
     # Automatic upgrading
     system.autoUpgrade.enable = false;
     system.autoUpgrade.dates = "weekly";
@@ -28,27 +40,9 @@
     nix.gc.options = "--delete-older-than 7d";
     nix.settings.auto-optimise-store = true;
 
-    networking.hostName = "ecoserver";
-
-    networking.networkmanager.enable = true;
-
-    time.timeZone = "Asia/Yekaterinburg";
-
-    i18n.defaultLocale = "en_IE.UTF-8";
-
-    i18n.extraLocaleSettings = {
-      LC_ADDRESS = "ru_RU.UTF-8";
-      LC_IDENTIFICATION = "ru_RU.UTF-8";
-      LC_MEASUREMENT = "ru_RU.UTF-8";
-      LC_MONETARY = "ru_RU.UTF-8";
-      LC_NAME = "ru_RU.UTF-8";
-      LC_NUMERIC = "ru_RU.UTF-8";
-      LC_PAPER = "ru_RU.UTF-8";
-      LC_TELEPHONE = "ru_RU.UTF-8";
-      LC_TIME = "ru_RU.UTF-8";
-    };
-
-    services.xserver.enable = true;
+    # ================ #
+    # === KEYBOARD === #
+    # ================ #
 
     services.xserver.xkb = {
       layout = "us,us,ru";
@@ -59,17 +53,9 @@
       ";
     };
 
-    services.printing.enable = false;
-
-    services.pulseaudio.enable = false;
-    security.rtkit.enable = true;
-
-    services.pipewire = {
-      enable = false;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
+    # ===================== #
+    # === USER SETTINGS === #
+    # ===================== #
 
     users.users.sljusard = {
       isNormalUser = true;
@@ -79,6 +65,10 @@
       ];
     };
 
+    # ========================== #
+    # === MODULES & PACKAGES === #
+    # ========================== #
+
     nixpkgs.config.allowUnfree = true;
 
     environment.systemPackages = with pkgs; [
@@ -87,12 +77,9 @@
       gawk
     ];
 
-    programs.yazi.enable = true;
-
-    programs.git.enable = true;
-    programs.git.package = selfpkgs.myGit;
-
-    virtualisation.docker.enable = true;
+    # ====================== #
+    # === SHELL SETTINGS === #
+    # ====================== #
 
     programs.fish.enable = true;
     programs.fish.package = selfpkgs.myEnvironment;
@@ -106,9 +93,9 @@
       '';
     };
 
-
-    # Reverse Proxy settings
-    # -----------------------------------------------------
+    # ================== #
+    # === NETWORKING === #
+    # ================== #
     
     services.caddy.enable = true;
 
@@ -178,10 +165,9 @@
       ];
     };
   
-    # -----------------------------------------------------
-
-    # Grafana settings (test)
-    # -----------------------------------------------------
+    # ====================== #
+    # === [TEST] GRAFANA === #
+    # ====================== #
     
     services.grafana = {
       enable = true;
@@ -211,7 +197,40 @@
       ];
     };
 
-    # -----------------------------------------------------
+    # ===================== #
+    # === TIME & LOCALE === #
+    # ===================== #
+
+    time.timeZone = "Asia/Yekaterinburg";
+
+    i18n.defaultLocale = "en_IE.UTF-8";
+
+    i18n.extraLocaleSettings = {
+      LC_ADDRESS = "ru_RU.UTF-8";
+      LC_IDENTIFICATION = "ru_RU.UTF-8";
+      LC_MEASUREMENT = "ru_RU.UTF-8";
+      LC_MONETARY = "ru_RU.UTF-8";
+      LC_NAME = "ru_RU.UTF-8";
+      LC_NUMERIC = "ru_RU.UTF-8";
+      LC_PAPER = "ru_RU.UTF-8";
+      LC_TELEPHONE = "ru_RU.UTF-8";
+      LC_TIME = "ru_RU.UTF-8";
+    };
+
+    # ====================== #
+    # === OTHER SETTINGS === #
+    # ====================== #
+
+    services.printing.enable = false;
+
+    security.rtkit.enable = true;
+
+    programs.yazi.enable = true;
+
+    programs.git.enable = true;
+    programs.git.package = selfpkgs.myGit;
+
+    virtualisation.docker.enable = true;
 
     system.stateVersion = "25.11";
   };
