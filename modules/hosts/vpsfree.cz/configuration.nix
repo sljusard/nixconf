@@ -115,12 +115,12 @@
 
     services.caddy.virtualHosts."cdn01.sljusard.com".extraConfig = ''
       # Panel
-      handle /bkLk5yLje293gufOSj/* {
-        reverse_proxy 127.0.0.1:2100
-      }
+      # handle /bkLk5yLje293gufOSj/* {
+      #   reverse_proxy 127.0.0.1:2100
+      # }
 
       # Subscription
-      handle /d8ef4a6ffe6b9734/* {
+      handle /api/* {
         reverse_proxy 127.0.0.1:2096
       }
     '';
@@ -130,7 +130,7 @@
     '';
 
     networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 80 443 58143 ];
+    networking.firewall.allowedTCPPorts = [ 80 443 8080 ];
     networking.firewall.allowedUDPPorts = [ 59775 ];
     
     networking.hosts = {
