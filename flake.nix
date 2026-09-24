@@ -23,6 +23,8 @@
       url = "git+https://git.sljusard.com/sljusard/dvr-patched-flake.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vpsadminos.url = "github:vpsfreecz/vpsadminos";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
