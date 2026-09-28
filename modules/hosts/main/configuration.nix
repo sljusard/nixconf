@@ -249,10 +249,6 @@
     programs.thunderbird.enable = true;
     services.protonmail-bridge.enable = true;
 
-    nixpkgs.config.permittedInsecurePackages = [
-      "electron-40.10.5"
-    ];
-
     virtualisation.waydroid.enable = true;
     virtualisation.waydroid.package = pkgs.waydroid-nftables;
 
