@@ -21,6 +21,7 @@
       pkgs.lutris
       pkgs.heroic
       pkgs.vintagestory
+      pkgs.ckan
     ];
   };
   
