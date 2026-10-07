@@ -155,6 +155,7 @@
       fontconfig
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
+      kdePackages.okular
     ];
 
     fonts.packages = [
@@ -254,6 +255,10 @@
 
     virtualisation.waydroid.enable = true;
     virtualisation.waydroid.package = pkgs.waydroid-nftables;
+
+    xdg.mime.defaultApplications = {
+      "application/pdf" = "okularApplication_pdf.desktop";
+    };
 
     system.stateVersion = "25.11"; # Do not touch!
   };
