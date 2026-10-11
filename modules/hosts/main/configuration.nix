@@ -158,6 +158,9 @@
       inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
       calibre
       kdePackages.okular
+      picard
+      feishin
+      spek
     ];
 
     fonts.packages = [
