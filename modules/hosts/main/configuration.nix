@@ -94,7 +94,7 @@
     users.users.cypher = {
       isNormalUser = true;
       description = "Cypher";
-      extraGroups = [ "input" "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" "libvirtd" ];
+      extraGroups = [ "input" "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" "libvirtd" "media" ];
       packages = with pkgs; [
         vlc
         obs-studio
@@ -228,6 +228,27 @@
     # ====================== #
     # === OTHER SETTINGS === #
     # ====================== #
+
+    users.groups.media = {};
+
+    services.prowlarr = {
+      enable = true;
+      settings.server.port = 9600;
+      openFirewall = false;
+    };
+
+    services.lidarr = {
+      enable = true;
+      settings.server.port = 9610;
+      openFirewall = false;
+      group = "media";
+    };
+
+    services.flaresolverr = {
+      enable = true;
+      port = 9601;
+      openFirewall = false;
+    };
 
     services.udisks2.enable = true;
 
