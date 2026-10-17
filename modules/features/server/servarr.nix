@@ -8,6 +8,7 @@
       webuiPort = 8280;
       torrentingPort = 11430;
       user = "cypher";
+      group = "media";
     };
 
     services.prowlarr = {
@@ -19,7 +20,18 @@
     services.lidarr = {
       enable = true;
       settings.server.port = 9610;
-      openFirewall = true;
+      group = "media";
+    };
+
+    services.radarr = {
+      enable = true;
+      settings.server.port = 9620;
+      group = "media";
+    };
+
+    services.sonarr = {
+      enable = true;
+      settings.server.port = 9630;
       group = "media";
     };
 
