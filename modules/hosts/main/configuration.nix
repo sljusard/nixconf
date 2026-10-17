@@ -127,6 +127,7 @@
       ai
       virtualisation
       servarr
+      media-server
 
       # Host-specific modules
       noosphereSSH
