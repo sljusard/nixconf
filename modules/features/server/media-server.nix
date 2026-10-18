@@ -5,7 +5,12 @@
       enable = true;
       settings.Port = 4544;
       settings.MusicFolder = "/mnt/warehouse/music";
-      settings.Address = "127.0.0.1";
+      settings.Address = "192.168.1.111";
+    };
+
+    services.jellyfin = {
+      enable = true;
+      group = "media";
     };
   };
 
