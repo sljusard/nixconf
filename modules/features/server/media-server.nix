@@ -4,8 +4,8 @@
     services.navidrome = {
       enable = true;
       settings.Port = 4544;
-      settings.MusicFolder = "/mnt/warehouse/music";
-      settings.Address = "192.168.1.111";
+      settings.MusicFolder = "/mnt/storage/data/media/music";
+      settings.Address = "127.0.0.1";
     };
 
     services.jellyfin = {
