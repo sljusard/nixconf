@@ -108,6 +108,7 @@
         anki-bin
         digikam
         element-desktop
+        jellyfin-desktop
       ];
     };
 
@@ -162,6 +163,9 @@
       picard
       feishin
       spek
+      halloy
+      imv
+      mpv
     ];
 
     fonts.packages = [
@@ -171,6 +175,8 @@
     ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     fonts.fontDir.enable = true;
+
+    programs.amnezia-vpn.enable = true;
 
     # ========================= #
     # === FILESYSTEM MOUNTS === #
@@ -209,13 +215,13 @@
     };
 
     networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 11345 ];
+    networking.firewall.allowedTCPPorts = [ 11345 4544 ];
 
     # ===================== #
     # === TIME & LOCALE === #
     # ===================== #
 
-    time.timeZone = "Europe/Moscow";
+    time.timeZone = "Asia/Yekaterinburg";
 
     i18n.defaultLocale = "en_IE.UTF-8";
     i18n.extraLocaleSettings = {
