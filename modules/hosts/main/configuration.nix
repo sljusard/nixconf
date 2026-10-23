@@ -109,6 +109,7 @@
         digikam
         element-desktop
         jellyfin-desktop
+        feishin
       ];
     };
 
@@ -129,6 +130,7 @@
       virtualisation
       servarr
       media-server
+      music-toolkit
 
       # Host-specific modules
       noosphereSSH
@@ -160,9 +162,6 @@
       inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
       calibre
       kdePackages.okular
-      picard
-      feishin
-      spek
       halloy
       imv
       mpv
