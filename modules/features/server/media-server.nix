@@ -5,7 +5,7 @@
       enable = true;
       settings.Port = 4544;
       settings.MusicFolder = "/mnt/storage/data/media/music";
-      settings.Address = "127.0.0.1";
+      settings.Address = "0.0.0.0";
     };
 
     services.jellyfin = {

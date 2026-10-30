@@ -157,12 +157,15 @@
       filezilla
       winboat
       waydroid-helper
+      winbox
       fontconfig
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
       calibre
       kdePackages.okular
       halloy
+      librewolf
+      firefox
       imv
       mpv
     ];
@@ -176,6 +179,11 @@
     fonts.fontDir.enable = true;
 
     programs.amnezia-vpn.enable = true;
+    programs.throne = {
+      enable = true;
+      tunMode.setuid = true;
+      tunMode.enable = true;
+    };
 
     # ========================= #
     # === FILESYSTEM MOUNTS === #
@@ -213,7 +221,7 @@
       dvr = "distrobox enter resolve -- resolve-launch";
     };
 
-    networking.firewall.enable = true;
+    networking.firewall.enable = false;
     networking.firewall.allowedTCPPorts = [ 11345 4544 ];
 
     # ===================== #
@@ -238,6 +246,11 @@
     # ====================== #
     # === OTHER SETTINGS === #
     # ====================== #
+
+    services.paperless = {
+      enable = true;
+      port = 8380;
+    };
 
     services.udisks2.enable = true;
 
