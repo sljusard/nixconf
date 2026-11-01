@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.noosphereSSH = { pkgs, lib, ... }: {
+  flake.nixosModules.lexmechanicSSH = { pkgs, lib, ... }: {
     services.openssh.settings.AllowUsers = [ "cypher" ];
     users.users."cypher".openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBM2rF0pyN4Lhi0H5NlmzZbcSLfVjA0OTECJ09Cs2SAJ cypher@noosphere"

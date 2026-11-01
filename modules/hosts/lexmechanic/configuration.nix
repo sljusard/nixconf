@@ -133,9 +133,9 @@
       music-toolkit
 
       # Host-specific modules
-      noosphereSSH
+      lexmechanicSSH
       org-backup
-      noosphereHardware # Always keep this one!
+      lexmechanicHardware # Always keep this one!
     ];
 
     environment.systemPackages = with pkgs; [
