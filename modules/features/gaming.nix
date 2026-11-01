@@ -9,6 +9,7 @@
       # dedicatedServer.openFirewall = true;
       # gamescopeSession.enable = true;
       protontricks.enable = true;
+      extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
 
     programs.gamemode.enable = true;
