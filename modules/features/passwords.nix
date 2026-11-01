@@ -12,6 +12,7 @@
       pkgs.gopass
       pkgs.pwgen
       pkgs.openssl
+      pkgs.keepassxc
     ];
   };
   
