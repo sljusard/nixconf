@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.noosphereConfiguration = { pkgs, lib, config, ... }: let
+  flake.nixosModules.archmagosConfiguration = { pkgs, lib, config, ... }: let
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
 
@@ -11,11 +11,11 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    boot.kernelPackages = pkgs.linuxPackages;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    networking.hostName = "noosphere";
+    networking.hostName = "archmagos";
     networking.networkmanager.enable = true;
     networking.wireless.enable = true;
 
@@ -39,28 +39,18 @@
     # === HARDWARE === #
     # ================ #
 
-    powerManagement.cpuFreqGovernor = "performance";
+    # powerManagement.cpuFreqGovernor = "performance";
 
     hardware.graphics.enable = true;
 
     # Nvidia GPU settings
     hardware.nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
+      open = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
 
-    hardware.nvidia.prime = {
-      sync.enable = true;
-      nvidiaBusId = "PCI:1:0:0";
-      intelBusId = "PCI:0:2:0";
-    };
-
-    services.xserver.videoDrivers = [ "nvidia" "modesetting" ];
-    hardware.nvidia-container-toolkit.enable = true;
+    services.xserver.videoDrivers = [ "nvidia" ];
 
     # ===================== #
     # === LOGIN MANAGER === #
@@ -100,9 +90,8 @@
         obs-studio
         telegram-desktop
         gimp
-        obsidian
+        # obsidian
         vesktop
-        # libreoffice-qt
         onlyoffice-desktopeditors
         cliamp
         anki-bin
@@ -127,15 +116,15 @@
       ssh # Depends on noosphereSSH
       passwords
       ai
-      virtualisation
+      # virtualisation
       servarr
       media-server
       music-toolkit
 
       # Host-specific modules
-      noosphereSSH
+      archmagosSSH
       org-backup
-      noosphereHardware # Always keep this one!
+      archmagosHardware # Always keep this one!
     ];
 
     environment.systemPackages = with pkgs; [
@@ -152,7 +141,6 @@
       pandoc
       wl-clipboard
       sddm-astronaut
-      tetex
       dmidecode
       filezilla
       winboat
@@ -168,11 +156,12 @@
       firefox
       imv
       mpv
+      noctalia
     ];
 
     fonts.packages = [
       pkgs.monocraft
-      pkgs.corefonts
+   #   pkgs.corefonts
     ]
     ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
@@ -181,7 +170,6 @@
     programs.amnezia-vpn.enable = true;
     programs.throne = {
       enable = true;
-      tunMode.setuid = true;
       tunMode.enable = true;
     };
 
@@ -189,22 +177,15 @@
     # === FILESYSTEM MOUNTS === #
     # ========================= #
 
-    # Second SSD
-    fileSystems."/mnt/storage" = { 
-      device = "/dev/disk/by-uuid/ececae3e-ecff-48a1-92c7-e0c0b7f45e78";
-      fsType = "ext4";
-      options = [ "defaults" "nofail" ];
-    };
-
     # NAS mount
-    boot.supportedFilesystems = [ "nfs" ];
-    services.rpcbind.enable = true;
+    # boot.supportedFilesystems = [ "nfs" ];
+    # services.rpcbind.enable = true;
 
-    fileSystems."/mnt/warehouse" = {
-      device = "192.168.1.10:/nfs/warehouse";
-      fsType = "nfs";
-      options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
-    };
+    # fileSystems."/mnt/warehouse" = {
+      # device = "192.168.1.10:/nfs/warehouse";
+      # fsType = "nfs";
+      # options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
+    # };
 
     # ====================== #
     # === SHELL SETTINGS === #
@@ -215,13 +196,13 @@
 
     programs.fish.shellAliases = {
       winboot = "sudo bootctl set-oneshot auto-windows && reboot";
-      rebuild = "sudo nixos-rebuild switch --flake .#noosphere";
-      niri-displayfix = "niri msg output HDMI-A-1 mode 2560x1440@143.996";
+      rebuild = "sudo nixos-rebuild switch --flake /home/cypher/nixconf#archmagos";
+      niri-displayfix = "niri msg output HDMI-A-2 mode 2560x1440@143.996";
       doom = "~/.config/emacs/bin/doom emacs 2>/dev/null & disown";
       dvr = "distrobox enter resolve -- resolve-launch";
     };
 
-    networking.firewall.enable = false;
+    networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 11345 4544 ];
 
     # ===================== #
@@ -234,6 +215,8 @@
     i18n.extraLocaleSettings = {
       LC_ADDRESS = "ru_RU.UTF-8";
       LC_IDENTIFICATION = "ru_RU.UTF-8";
+
+
       LC_MEASUREMENT = "ru_RU.UTF-8";
       LC_MONETARY = "ru_RU.UTF-8";
       LC_NAME = "ru_RU.UTF-8";
@@ -248,25 +231,24 @@
     # ====================== #
 
     services.paperless = {
-      enable = true;
+      enable = false;
       port = 8380;
     };
 
     services.udisks2.enable = true;
 
-    services.printing.enable = true;
-    hardware.sane.enable = true;
-    hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
-    services.avahi.enable = true;
-    services.avahi.nssmdns4 = true;
+    services.printing.enable = false;
+    hardware.sane.enable = false;
+    services.avahi.enable = false;
+    services.avahi.nssmdns4 = false;
 
     # Allow Git to push from mounted NAS
-    environment.etc."gitconfig".text = ''
-      [safe]
-        directory = /mnt/nas/games/installers
-    '';
+    # environment.etc."gitconfig".text = ''
+    #   [safe]
+    #     directory = /mnt/nas/games/installers
+    # '';
 
-    programs.labwc.enable = true;
+    programs.labwc.enable = false;
 
     programs.yazi.enable = true;
     programs.lazygit.enable = true;
@@ -277,13 +259,10 @@
     programs.thunderbird.enable = true;
     services.protonmail-bridge.enable = true;
 
-    virtualisation.waydroid.enable = true;
-    virtualisation.waydroid.package = pkgs.waydroid-nftables;
-
     xdg.mime.defaultApplications = {
       "application/pdf" = "okularApplication_pdf.desktop";
     };
 
-    system.stateVersion = "25.11"; # Do not touch!
+    system.stateVersion = "26.05"; # Do not touch!
   };
 }
