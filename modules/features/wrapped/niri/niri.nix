@@ -3,12 +3,11 @@
   flake.nixosModules.myNiri = { pkgs, lib, config, ... }: {
     config = {
       settings = let
-        noctaliaExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myNoctalia;
         rofiExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myRofi;
         footExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myFoot;
       in {
         spawn-at-startup = [
-          noctaliaExe
+         "noctalia"
         ];
 
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
