@@ -216,7 +216,7 @@
 
     programs.fish.shellAliases = {
       winboot = "sudo bootctl set-oneshot auto-windows && reboot";
-      rebuild = "sudo nixos-rebuild switch --flake .#noosphere";
+      rebuild = "sudo nixos-rebuild switch --flake /home/cypher/nixconf#lexmechanic";
       niri-displayfix = "niri msg output HDMI-A-1 mode 2560x1440@143.996";
       doom = "~/.config/emacs/bin/doom emacs 2>/dev/null & disown";
       dvr = "distrobox enter resolve -- resolve-launch";
