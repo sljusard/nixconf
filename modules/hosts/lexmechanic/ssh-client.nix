@@ -27,6 +27,12 @@
           Port 23
           User u645105
           ProxyJump prague-alpha
+
+        Host archmagos
+          Hostname host.sljusard.org
+          Port 4572
+          User cypher
+          SetEnv TERM=xterm-256color
      ";
      startAgent = true;
     };
