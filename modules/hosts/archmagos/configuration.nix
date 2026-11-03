@@ -195,11 +195,9 @@
     # users.defaultUserShell = pkgs.zsh;
 
     programs.fish.shellAliases = {
-      winboot = "sudo bootctl set-oneshot auto-windows && reboot";
+      # winboot = "sudo bootctl set-oneshot auto-windows && reboot";
       rebuild = "sudo nixos-rebuild switch --flake /home/cypher/nixconf#archmagos";
       niri-displayfix = "niri msg output HDMI-A-2 mode 2560x1440@143.996";
-      doom = "~/.config/emacs/bin/doom emacs 2>/dev/null & disown";
-      dvr = "distrobox enter resolve -- resolve-launch";
     };
 
     networking.firewall.enable = true;
