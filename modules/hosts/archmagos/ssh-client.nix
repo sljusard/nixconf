@@ -26,6 +26,12 @@
           Port 23
           User u645105
           ProxyJump prague-alpha
+
+        Host lexmechanic
+          Hostname 192.168.88.251
+          Port 4572
+          User cypher
+          SetEnv TERM=xterm-256color
      ";
      startAgent = true;
     };
