@@ -15,11 +15,6 @@
           User sljusard
           SetEnv TERM=xterm-256color
 
-        Host vienna-alpha
-          Hostname 132.243.254.68
-          Port 22
-          User root
-
         Host prague-alpha
           Hostname 37.205.15.215
           Port 4572
