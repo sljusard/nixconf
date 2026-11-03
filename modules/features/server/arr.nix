@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
 
-  flake.nixosModules.servarr = { pkgs, lib, ... }: {
+  flake.nixosModules.arr = { pkgs, lib, ... }: {
     users.groups.media = {};
 
     services.qbittorrent = {

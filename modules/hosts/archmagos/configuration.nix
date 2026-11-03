@@ -117,7 +117,7 @@
       passwords
       ai
       # virtualisation
-      servarr
+      arr
       media-server
       music-toolkit
 
