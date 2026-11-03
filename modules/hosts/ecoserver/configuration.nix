@@ -7,6 +7,7 @@
       ssh # Depends on ecoserverSSH
       continuwuity
       podman
+      livekit
 
       # Host specific modules
       ecoserverHardware
