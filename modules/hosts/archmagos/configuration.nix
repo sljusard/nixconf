@@ -200,8 +200,6 @@
       niri-displayfix = "niri msg output HDMI-A-2 mode 2560x1440@143.996";
     };
 
-    networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 11345 4544 ];
 
     # ===================== #
     # === TIME & LOCALE === #
@@ -213,8 +211,6 @@
     i18n.extraLocaleSettings = {
       LC_ADDRESS = "ru_RU.UTF-8";
       LC_IDENTIFICATION = "ru_RU.UTF-8";
-
-
       LC_MEASUREMENT = "ru_RU.UTF-8";
       LC_MONETARY = "ru_RU.UTF-8";
       LC_NAME = "ru_RU.UTF-8";
@@ -223,6 +219,24 @@
       LC_TELEPHONE = "ru_RU.UTF-8";
       LC_TIME = "ru_RU.UTF-8";
     };
+
+    # ================== #
+    # === NETWORKING === #
+    # ================== #
+
+    services.caddy.enable = true;
+    services.caddy.virtualHosts = {
+      "music.sljusard.org".extraConfig = ''
+        reverse_proxy 127.0.0.1:4544
+      '';
+    };
+
+    networking.firewall.enable = true;
+    networking.firewall.allowedTCPPorts = [
+      80 443 # Caddy
+      11345 # qBittorrent
+      4544 # Navidrome
+    ];
 
     # ====================== #
     # === OTHER SETTINGS === #
