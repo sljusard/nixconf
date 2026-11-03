@@ -102,8 +102,6 @@
         gimp
         obsidian
         vesktop
-        # libreoffice-qt
-        onlyoffice-desktopeditors
         cliamp
         anki-bin
         digikam
@@ -124,7 +122,7 @@
       audio
       podman
       desktop
-      ssh # Depends on noosphereSSH
+      ssh # Depends on lexmechanicSSH
       passwords
       ai
       virtualisation
@@ -168,6 +166,9 @@
       firefox
       imv
       mpv
+      noctalia
+      cifs-utils
+      onlyoffice-desktopeditors
     ];
 
     fonts.packages = [
