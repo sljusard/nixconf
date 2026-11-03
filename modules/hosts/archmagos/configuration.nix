@@ -261,6 +261,10 @@
       "application/pdf" = "okularApplication_pdf.desktop";
     };
 
+    nixpkgs.config.problems.handlers = {
+             "gtk+".broken = "warn"; # or "ignore"
+           }; # remove when possible
+
     system.stateVersion = "26.05"; # Do not touch!
   };
 }

@@ -288,6 +288,10 @@
       "application/vnd.oasis.opendocument.text"  = "onlyoffice-desktopeditors.desktop"; # .odt
       "application/rtf"                          = "onlyoffice-desktopeditors.desktop"; # .rtf
     };
+    
+    nixpkgs.config.problems.handlers = {
+      "gtk+".broken = "warn"; # or "ignore"
+    }; # remove when possible
 
     system.stateVersion = "25.11"; # Do not touch!
   };
