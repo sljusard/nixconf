@@ -283,6 +283,10 @@
 
     xdg.mime.defaultApplications = {
       "application/pdf" = "okularApplication_pdf.desktop";
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "onlyoffice-desktopeditors.desktop"; # .docx
+      "application/msword"                       = "onlyoffice-desktopeditors.desktop"; # .doc
+      "application/vnd.oasis.opendocument.text"  = "onlyoffice-desktopeditors.desktop"; # .odt
+      "application/rtf"                          = "onlyoffice-desktopeditors.desktop"; # .rtf
     };
 
     system.stateVersion = "25.11"; # Do not touch!
