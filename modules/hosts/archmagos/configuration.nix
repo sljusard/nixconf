@@ -200,7 +200,6 @@
       niri-displayfix = "niri msg output HDMI-A-2 mode 2560x1440@143.996";
     };
 
-
     # ===================== #
     # === TIME & LOCALE === #
     # ===================== #
