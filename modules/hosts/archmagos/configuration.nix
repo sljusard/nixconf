@@ -199,7 +199,7 @@
     programs.fish.shellAliases = {
       # winboot = "sudo bootctl set-oneshot auto-windows && reboot";
       rebuild = "sudo nixos-rebuild switch --flake /home/cypher/nixconf#archmagos";
-      niri-displayfix = "niri msg output HDMI-A-2 mode 2560x1440@143.996";
+      niri-displayfix = "niri msg output DP-4 mode 2560x1440@179.999";
     };
 
     # ===================== #
