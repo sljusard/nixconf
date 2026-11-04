@@ -33,6 +33,12 @@
           Port 4572
           User cypher
           SetEnv TERM=xterm-256color
+
+        Host archmagos-local
+          Hostname 192.168.88.249
+          Port 4572
+          User cypher
+          SetEnv TERM=xterm-256color
      ";
      startAgent = true;
     };
