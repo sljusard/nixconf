@@ -39,15 +39,6 @@
       reverse_proxy /.well-known/matrix* 127.0.0.1:6167
     '';
 
-    services.caddy.virtualHosts."livekit.econadzor.org".extraConfig = ''
-      @lk-jwt-service path /sfu/get* /healthz* /get_token*
-      route @lk-jwt-service {
-        reverse_proxy 127.0.0.1:8081
-      }
-
-      reverse_proxy 127.0.0.1:7880
-     '';
-
     networking.firewall.allowedTCPPorts = [ 7881 ];
     networking.firewall.allowedUDPPortRanges = [ 
       { from = 50100; to = 50200; } 
