@@ -10,7 +10,19 @@
     programs.ssh = {
       extraConfig = "
         Host ecoserver
-          Hostname 217.114.188.94
+          Hostname 192.168.88.63
+          Port 4572
+          User sljusard
+          SetEnv TERM=xterm-256color
+
+        Host lexmechanic
+          Hostname 192.168.88.62
+          Port 4572
+          User cypher
+          SetEnv TERM=xterm-256color
+
+        Host ecoserver-remote
+          Hostname 5.53.17.101
           Port 4572
           User sljusard
           SetEnv TERM=xterm-256color
@@ -26,12 +38,6 @@
           Port 23
           User u645105
           ProxyJump prague-alpha
-
-        Host lexmechanic
-          Hostname 192.168.88.251
-          Port 4572
-          User cypher
-          SetEnv TERM=xterm-256color
      ";
      startAgent = true;
     };
