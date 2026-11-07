@@ -152,8 +152,10 @@
         "econadzor.org" 
         "matrix.econadzor.org"
         "livekit.econadzor.org"
+        "chat.econadzor.org"
         "grafana.sljusard.com"
-        "test.econadzor.org"
+        "mail.econadzor.org"
+        "git.sljusard.com" # Forgejo
       ];
     };
   
