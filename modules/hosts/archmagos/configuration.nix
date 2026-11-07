@@ -225,13 +225,6 @@
     # === NETWORKING === #
     # ================== #
 
-    services.caddy.enable = true;
-    services.caddy.virtualHosts = {
-      "music.sljusard.org".extraConfig = ''
-        reverse_proxy 127.0.0.1:4544
-      '';
-    };
-
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [
       80 443 # Caddy

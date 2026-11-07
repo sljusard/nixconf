@@ -134,6 +134,10 @@
       reverse_proxy 127.0.0.1:6100
     '';
 
+    services.caddy.virtualHosts."music.sljusard.org".extraConfig = ''
+      reverse_proxy 192.168.88.64:4544
+    '';
+
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 
       80 443 # Caddy
