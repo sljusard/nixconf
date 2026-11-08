@@ -90,66 +90,58 @@
     # ================== #
     
     services.caddy.enable = true;
+    services.caddy.virtualHosts = { 
+      "budibase.econadzor.org".extraConfig = ''
+        reverse_proxy 127.0.0.1:10000
+      '';
 
-    services.caddy.virtualHosts."budibase.econadzor.org".extraConfig = ''
-      reverse_proxy 127.0.0.1:10000
-    '';
+      "wiki.econadzor.org".extraConfig = ''
+        reverse_proxy 127.0.0.1:3200
+      '';
 
-    services.caddy.virtualHosts."wiki.econadzor.org".extraConfig = ''
-      reverse_proxy 127.0.0.1:3200
-    '';
+      "stream.econadzor.com".extraConfig = ''
+        reverse_proxy 127.0.0.1:8085
+      '';
 
-    services.caddy.virtualHosts."stream.econadzor.com".extraConfig = ''
-      reverse_proxy 127.0.0.1:8085
-    '';
+      "git.sljusard.com".extraConfig = ''
+        reverse_proxy 127.0.0.1:3000
+      '';
 
-    services.caddy.virtualHosts."git.sljusard.com".extraConfig = ''
-      reverse_proxy 127.0.0.1:3000
-    '';
-
-    services.caddy.virtualHosts."mail.econadzor.org".extraConfig = ''
-      reverse_proxy https://127.0.0.1:8443 {
-        transport http {
-          tls_insecure_skip_verify
+      "mail.econadzor.org".extraConfig = ''
+        reverse_proxy https://127.0.0.1:8443 {
+          transport http {
+            tls_insecure_skip_verify
+          }
+          header_up Host {host}
+          header_up X-Forwarded-Proto https
+          header_up X-Forwarded-For {remote_host}
         }
-        header_up Host {host}
-        header_up X-Forwarded-Proto https
-        header_up X-Forwarded-For {remote_host}
-      }
-    '';
+      '';
 
-    services.caddy.virtualHosts."inbox.econadzor.org".extraConfig = ''
-      reverse_proxy 127.0.0.1:8340
-    '';
+      "inbox.econadzor.org".extraConfig = ''
+        reverse_proxy 127.0.0.1:8340
+      '';
 
-    services.caddy.virtualHosts."vw.econadzor.org".extraConfig = ''
-      reverse_proxy 127.0.0.1:3800
-    '';
+      "vw.econadzor.org".extraConfig = ''
+        reverse_proxy 127.0.0.1:3800
+      '';
 
-    services.caddy.virtualHosts."sljussar.de".extraConfig = ''
-      reverse_proxy 127.0.0.1:3100
-    '';
+      "sljussar.de".extraConfig = ''
+        reverse_proxy 127.0.0.1:3100
+      '';
 
-    services.caddy.virtualHosts."chat.econadzor.org".extraConfig = ''
-      reverse_proxy 127.0.0.1:6100
-    '';
+      "chat.econadzor.org".extraConfig = ''
+        reverse_proxy 127.0.0.1:6100
+      '';
 
-    services.caddy.virtualHosts."music.sljusard.org".extraConfig = ''
-      reverse_proxy 192.168.88.64:4544
-    '';
+      "rw.sljusard.org".extraConfig = ''
+        reverse_proxy 127.0.0.1:3500
+      '';
 
-    networking.firewall.enable = true;
-    networking.firewall.allowedTCPPorts = [ 
-      80 443 # Caddy
-      25 465 587 # SMTP
-      143 993 # IMAP
-      110 995 # POP3 
-      4190 # Sieve 
-      3022 4440 3389 # Other
-      1935 # Owncast
-    ];
-
-    networking.firewall.allowedUDPPorts = [ 3389 8189 ];
+      "music.sljusard.org".extraConfig = ''
+        reverse_proxy 192.168.88.64:4544
+      '';
+    };
 
     networking.hosts = {
       "127.0.0.1" = [ 
@@ -163,6 +155,18 @@
       ];
     };
   
+    networking.firewall.enable = true;
+    networking.firewall.allowedTCPPorts = [ 
+      80 443 # Caddy
+      25 465 587 # SMTP
+      143 993 # IMAP
+      110 995 # POP3 
+      4190 # Sieve 
+      3022 4440 3389 # Other
+      1935 # Owncast
+    ];
+    networking.firewall.allowedUDPPorts = [ 3389 8189 ];
+
     # ====================== #
     # === [TEST] GRAFANA === #
     # ====================== #
