@@ -145,6 +145,14 @@
       "auth.econadzor.org".extraConfig = ''
         reverse_proxy 127.0.0.1:9091
       '';
+
+      "wfr.econadzor.org".extraConfig = ''
+        forward_auth 127.0.0.1:9091 {
+          uri /api/authz/forward-auth
+          copy_headers Remote-User Remote-Groups Remote-Email Remote-Name
+        }
+        reverse_proxy 127.0.0.1:7120
+      '';
     };
 
     networking.hosts = {
@@ -156,6 +164,8 @@
         "grafana.sljusard.com"
         "mail.econadzor.org"
         "git.sljusard.com" # Forgejo
+        "auth.econadzor.org"
+        "wfr.econadzor.org"
       ];
     };
   
