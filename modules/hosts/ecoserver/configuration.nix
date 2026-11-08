@@ -141,6 +141,10 @@
       "music.sljusard.org".extraConfig = ''
         reverse_proxy 192.168.88.64:4544
       '';
+
+      "auth.econadzor.org".extraConfig = ''
+        reverse_proxy 127.0.0.1:9091
+      '';
     };
 
     networking.hosts = {
@@ -166,6 +170,36 @@
       1935 # Owncast
     ];
     networking.firewall.allowedUDPPorts = [ 3389 8189 ];
+    
+    services.authelia.instances = { 
+      econadzor-org = {
+        enable = true;
+        user = "sljusard";
+        secrets = {
+          jwtSecretFile = "/home/sljusard/authelia-secrets/jwt";
+          sessionSecretFile = "/home/sljusard/authelia-secrets/session";
+          storageEncryptionKeyFile = "/home/sljusard/authelia-secrets/storage";
+        };
+        settings = {
+          theme = "auto";
+          server.address = "tcp://127.0.0.1:9091/";
+          authentication_backend = {
+            file.path = "/var/lib/authelia-econadzor-org/users.yml";
+            password_reset.disable = true;
+          };
+          access_control = {
+            default_policy = "deny";
+            rules = [{ domain = "wfr.econadzor.org"; policy = "one_factor"; }];
+          };
+          session.cookies = [{
+            domain = "econadzor.org";
+            authelia_url = "https://auth.econadzor.org";
+          }];
+          storage.local.path = "/var/lib/authelia-econadzor-org/db.sqlite3";
+          notifier.filesystem.filename = "/var/lib/authelia-econadzor-org/notification.txt";
+        };
+      };
+    };
 
     # ====================== #
     # === [TEST] GRAFANA === #
