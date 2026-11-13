@@ -4,11 +4,16 @@
     config = {
       sourcedFiles = [ ./config.conf ];
 
+      # Reloads mango with the new config on nixos-rebuild switch.
+      # The unit is installed via systemd.packages in desktop.nix.
+      hotReload.enable = true;
+
       settings = let
         rofiExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myRofi;
         footExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myFoot;
       in {
         exec = [ "noctalia" ];
+        exec_once = [ "systemctl --user start mangoReloadConfig.service" ];
 
         bind = [
           "super,return,spawn,${footExe}"

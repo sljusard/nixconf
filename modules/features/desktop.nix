@@ -8,6 +8,7 @@
 
     programs.mango.enable = true;
     programs.mango.package = selfpkgs.myMango; # Declared in mango/mango.nix
+    systemd.packages = [ selfpkgs.myMango ]; # mango hot-reload user service
 
     programs.fish.enable = true;
     programs.fish.package = selfpkgs.myEnvironment; # Declared in environment.nix
