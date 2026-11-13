@@ -6,6 +6,9 @@
     programs.niri.enable = true;
     programs.niri.package = selfpkgs.myNiri; # Declared in niri/niri.nix
 
+    programs.mango.enable = true;
+    programs.mango.package = selfpkgs.myMango; # Declared in mango/mango.nix
+
     programs.fish.enable = true;
     programs.fish.package = selfpkgs.myEnvironment; # Declared in environment.nix
 
