@@ -4,9 +4,8 @@
     config = {
       settings = {
         mouse.hide-when-typing = "yes";
-        main.font = "BlexMono Nerd Font:size=11.25";
-#        main.font = "JetBrainsMono Nerd Font:size=11.25";
-#        main.font = "Monocraft:size=12";
+        main.font = "BlexMono Nerd Font:size=12";
+        main.pad = "2x0 center";
         colors-dark = {
           background = "181818";
           alpha = "0.7";
