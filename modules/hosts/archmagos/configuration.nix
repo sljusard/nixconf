@@ -264,8 +264,6 @@
 
     programs.thunderbird.enable = true;
     services.protonmail-bridge.enable = true;
-    
-    programs.mango.enable = true;
 
     xdg.mime.defaultApplications = {
       "application/pdf" = "okularApplication_pdf.desktop";
