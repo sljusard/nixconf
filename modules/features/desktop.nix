@@ -10,6 +10,20 @@
     programs.mango.package = selfpkgs.myMango; # Declared in mango/mango.nix
     systemd.packages = [ selfpkgs.myMango ]; # mango hot-reload user service
 
+    programs.dconf.enable = true;
+    programs.dconf.profiles.user.databases = [{
+      settings."org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+        gtk-theme = "Adwaita-dark";
+      };
+    }];
+    
+    qt.enable = true;
+    qt = {
+      platformTheme = "gnome";
+      style = "adwaita-dark";
+    };
+
     programs.noctalia.enable = true;
     programs.noctalia.systemd.enable = true; # Use systemd for noctalia auto-start instead of WM exec
 
