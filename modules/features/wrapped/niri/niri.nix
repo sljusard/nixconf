@@ -6,10 +6,6 @@
         rofiExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myRofi;
         footExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myFoot;
       in {
-        spawn-at-startup = [
-         "noctalia"
-        ];
-
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
         layer-rules = [

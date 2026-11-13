@@ -10,6 +10,9 @@
     programs.mango.package = selfpkgs.myMango; # Declared in mango/mango.nix
     systemd.packages = [ selfpkgs.myMango ]; # mango hot-reload user service
 
+    programs.noctalia.enable = true;
+    programs.noctalia.systemd.enable = true; # Use systemd for noctalia auto-start instead of WM exec
+
     programs.fish.enable = true;
     programs.fish.package = selfpkgs.myEnvironment; # Declared in environment.nix
 

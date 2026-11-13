@@ -12,7 +12,6 @@
         rofiExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myRofi;
         footExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myFoot;
       in {
-        exec = [ "noctalia" ];
         exec_once = [ "systemctl --user start mangoReloadConfig.service" ];
 
         bind = [

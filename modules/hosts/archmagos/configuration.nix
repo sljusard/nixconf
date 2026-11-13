@@ -156,7 +156,6 @@
       firefox
       imv
       mpv
-      noctalia
       exfat
       gnome-disk-utility
     ];
