@@ -124,12 +124,14 @@
         "type": "publicip",
         "key": "{#90}│ {##5277C3}Public IPv4 {#90}│",
         "ipv6": false,
+        "timeout": 1000,
         "format": "{$1}{ip}  {#2}[{location}]"
       },
       {
         "type": "publicip",
         "key": "{#90}│ {##5277C3}Public IPv6 {#90}│",
         "ipv6": true,
+        "timeout": 1000,
         "format": "{$1}{ip}  {#2}[{location}]"
       },
       {
