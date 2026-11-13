@@ -2,7 +2,7 @@
 
   flake.nixosModules.myMango = { pkgs, lib, config, ... }: {
     config = {
-      sourcedFiles = [ ./config.conf ./monitors.conf ];
+      sourcedFiles = [ ./config.conf ./keybinds.conf ./monitors.conf ];
 
       # Reloads mango with the new config on nixos-rebuild switch.
       # The unit is installed via systemd.packages in desktop.nix.
