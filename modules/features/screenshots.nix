@@ -36,7 +36,8 @@
           # Small selection: keep a normal (floating) window
           then "--floating-hack"
           # Full screen: open on top of the desktop like an overlay
-          else "--fullscreen current-screen --no-window-decoration --initial-tool crop"
+          # (separate app id so mango window rules can tell the two apart)
+          else "--fullscreen current-screen --no-window-decoration --initial-tool crop --app-id com.gabm.satty.overlay"
         }
       '' else ''
         wl-copy --type image/png < "$file"
