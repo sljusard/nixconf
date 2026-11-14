@@ -31,7 +31,13 @@
       '' else ''
         grim "$file"
       '') + (if edit then ''
-        satty --filename "$file" --output-filename "$file" --copy-command wl-copy --early-exit
+        satty --filename "$file" --output-filename "$file" --copy-command wl-copy --early-exit ${
+          if area
+          # Small selection: keep a normal (floating) window
+          then "--floating-hack"
+          # Full screen: open on top of the desktop like an overlay
+          else "--fullscreen current-screen --no-window-decoration --initial-tool crop"
+        }
       '' else ''
         wl-copy --type image/png < "$file"
       '');
