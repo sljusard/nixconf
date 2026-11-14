@@ -99,6 +99,8 @@
         element-desktop
         jellyfin-desktop
         feishin
+        inkscape
+        winboat
       ];
     };
 
@@ -158,11 +160,13 @@
       mpv
       exfat
       gnome-disk-utility
+      waypipe
+      baobab
     ];
 
     fonts.packages = [
       pkgs.monocraft
-   #   pkgs.corefonts
+      pkgs.corefonts
     ]
     ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
