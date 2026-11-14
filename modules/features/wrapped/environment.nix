@@ -22,7 +22,7 @@
         pkgs.ffmpeg-full
       ];
       env = {
-        EDITOR = "nvim";
+        EDITOR = lib.getExe selfpkgs.myNeovim;
       };
     };
   };
