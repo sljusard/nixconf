@@ -164,7 +164,7 @@
     };
 
     networking.hosts = {
-      "127.0.0.1" = [ 
+      "192.168.88.63" = [
         "econadzor.org" 
         "matrix.econadzor.org"
         "livekit.econadzor.org"
