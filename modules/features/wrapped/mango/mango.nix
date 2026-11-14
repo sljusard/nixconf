@@ -21,7 +21,7 @@
           "super,code:28,spawn,${footExe}"
           "super,code:39,spawn,${rofiExe} -show drun"
           "none,F12,spawn,${screenshotExe}"
-          "shift,F12,spawn,${screenshotEditExe}"
+          "ctrl,F12,spawn,${screenshotEditExe}"
         ];
       };
     };
