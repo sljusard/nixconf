@@ -10,6 +10,7 @@
         grim
         wl-clipboard
         satty
+        libnotify
         coreutils
       ];
       text = ''
@@ -23,6 +24,7 @@
           --fullscreen current-screen --no-window-decoration --initial-tool crop
       '' else ''
         wl-copy --type image/png < "$file"
+        notify-send -a "Screenshot" -i "$file" "Screenshot taken" "Saved to $file and copied to clipboard"
       '');
     };
   in {
