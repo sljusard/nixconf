@@ -163,7 +163,6 @@
       firefox
       imv
       mpv
-      noctalia
       cifs-utils
       onlyoffice-desktopeditors
     ];

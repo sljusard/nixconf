@@ -1,0 +1,73 @@
+[bar]
+order = [ "Primary" ]
+
+    [bar.Primary]
+    end = [
+        "group:g1",
+        "clipboard",
+        "network",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "control-center",
+        "keyboard_layout",
+        "notifications",
+        "session"
+    ]
+    start = [ "sysmon", "group:g2" ]
+
+        [[bar.Primary.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        border_width = 1.0
+        enabled = true
+        fill = "surface_container"
+        id = "g1"
+        members = [ "audio_visualizer", "media" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.Primary.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        border_width = 1.0
+        enabled = true
+        fill = "surface_container"
+        id = "g2"
+        members = [ "workspaces", "tray" ]
+        opacity = 1.0
+        padding = 6.0
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+[shell]
+lang = "ru"
+
+    [shell.keyboard_layout.custom_labels]
+    "English (Colemak)" = "CMK"
+    "English (US)" = "ENG"
+    Russian = "RUS"
+
+[theme]
+builtin = "Gruvbox"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-tonal-spot"
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+
+[widget.date]
+color = "secondary"

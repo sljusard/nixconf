@@ -8,6 +8,8 @@
       in {
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
+        spawn-at-startup = [ (lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myNoctalia) ];
+
         layer-rules = [
           {
             matches = [ { namespace = "^noctalia-wallpaper"; } ];

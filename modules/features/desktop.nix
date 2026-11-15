@@ -25,7 +25,7 @@
     # };
 
     programs.noctalia.enable = true;
-    programs.noctalia.systemd.enable = true; # Use systemd for noctalia auto-start instead of WM exec
+    programs.noctalia.package = selfpkgs.myNoctalia; # Declared in noctalia/noctalia.nix
 
     programs.fish.enable = true;
     programs.fish.package = selfpkgs.myEnvironment; # Declared in environment.nix

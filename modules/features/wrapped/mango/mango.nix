@@ -13,8 +13,9 @@
         footExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myFoot;
         screenshotExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.screenshot; # Declared in screenshots.nix
         screenshotEditExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.screenshot-edit;
+        noctaliaExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myNoctalia;
       in {
-        exec_once = [ "systemctl --user start mangoReloadConfig.service" ];
+        exec_once = [ "systemctl --user start mangoReloadConfig.service" noctaliaExe ];
 
         bind = [
           "super,return,spawn,${footExe}"
