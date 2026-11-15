@@ -56,7 +56,6 @@
     # === LOGIN MANAGER === #
     # ===================== #
 
-    services.displayManager.defaultSession = "niri";
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;

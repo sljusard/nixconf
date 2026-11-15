@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.desktop = { pkgs, lib, ... }: let
+  flake.nixosModules.desktop = { config, pkgs, lib, ... }: let
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
     programs.niri.enable = true;
@@ -9,6 +9,8 @@
     programs.mango.enable = false;
     programs.mango.package = selfpkgs.myMango; # Declared in mango/mango.nix
     systemd.packages = [ selfpkgs.myMango ]; # mango hot-reload user service
+
+    services.displayManager.defaultSession = lib.head config.programs.niri.package.providedSessions;
 
     # programs.dconf.enable = true;
     # programs.dconf.profiles.user.databases = [{
