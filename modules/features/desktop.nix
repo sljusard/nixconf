@@ -6,7 +6,7 @@
     programs.niri.enable = true;
     programs.niri.package = selfpkgs.myNiri; # Declared in niri/niri.nix
 
-    programs.mango.enable = true;
+    programs.mango.enable = false;
     programs.mango.package = selfpkgs.myMango; # Declared in mango/mango.nix
     systemd.packages = [ selfpkgs.myMango ]; # mango hot-reload user service
 
