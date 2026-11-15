@@ -3,8 +3,8 @@ prefer-no-csd
 input {
     keyboard {
         xkb {
-            layout "us,us,ru"
-            variant ",colemak,"
+            layout "us,ru"
+            variant "colemak,"
             options "grp:alt_shift_toggle,compose:rctrl"
         }
 
@@ -63,10 +63,6 @@ window-rule {
 }
 
 binds {
-    // Ctrl+Alt+1 { switch-layout "0"; }
-    // Ctrl+Alt+2 { switch-layout "1"; }
-    // Ctrl+Alt+3 { switch-layout "2"; }
-
     Mod+Q { close-window; }
     Mod+F { maximize-column; }
     Mod+G { fullscreen-window; }

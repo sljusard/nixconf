@@ -81,11 +81,7 @@
     # === KEYBOARD === #
     # ================ #
 
-    services.xserver.xkb = {
-      layout = "us,us,ru";
-      variant = ",colemak,";
-      options = "grp:alt_shift_toggle,compose:rctrl";
-    };
+    # All settings are declared in features/keyboard.nix
 
     # ===================== #
     # === USER SETTINGS === #
@@ -122,6 +118,7 @@
       audio
       podman
       desktop
+      keyboard
       ssh # Depends on lexmechanicSSH
       passwords
       ai
