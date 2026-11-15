@@ -7,7 +7,7 @@
     services.navidrome = {
       enable = true;
       settings.Port = 4544;
-      settings.MusicFolder = "/mnt/storage/data/media/music";
+      settings.MusicFolder = "/mnt/data/media/music";
       settings.Address = "0.0.0.0";
     };
 
