@@ -23,6 +23,7 @@
 
       extraSettings = [
         { include = ./config.kdl; }
+        { include = ./outputs.kdl; }
       ];
     };
   };
