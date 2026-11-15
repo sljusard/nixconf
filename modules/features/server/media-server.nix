@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }: {
 
   flake.nixosModules.media-server = { pkgs, lib, ... }: {
+
+    users.groups.media = {};
+
     services.navidrome = {
       enable = true;
       settings.Port = 4544;
