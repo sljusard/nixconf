@@ -1,9 +1,21 @@
 { self, inputs, lib, ... }: {
 
-  flake.nixosModules.myFishConfig = { pkgs, config, ... }: {
+  flake.nixosModules.myFishConfig = { pkgs, config, ... }: let
+    # Each new interactive shell prints one of these at random
+    greetings = [
+      "There is no place like 127.0.0.1"
+      "Welcome back!"
+      "Linux larpmaxxing"
+      "No more ranked for me dawg"
+    ];
+  in {
     config = {
       configFile.content = ''
-        set fish_greeting
+        function fish_greeting
+          set_color ff8700
+          echo (random choice ${lib.escapeShellArgs greetings})
+          set_color normal
+        end
         ${lib.getExe pkgs.zoxide} init fish | source
       '';
       # Hand interactive bash sessions over to fish
