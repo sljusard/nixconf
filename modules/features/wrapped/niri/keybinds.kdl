@@ -78,7 +78,7 @@ binds {
     Mod+Ctrl+Page_Up { move-workspace-to-monitor-next; }
 
     // ===== Screenshots =====
+    // Ctrl+F12 (screenshot-edit with satty) lives in niri.nix, see screenshots.nix
     F12 { screenshot-screen; }
-    Ctrl+F12 { screenshot; }
     Shift+F12 { screenshot-window; }
 }

@@ -1,5 +1,8 @@
 prefer-no-csd
 
+// Same naming as the screenshot scripts in screenshots.nix
+screenshot-path "~/Pictures/Screenshots/%Y%m%d%H%M%S-screenshot.png"
+
 input {
     keyboard {
         xkb {
@@ -34,6 +37,28 @@ layout {
 window-rule {
     geometry-corner-radius 6
     clip-to-geometry true
+}
+
+// ===== Satty (screenshots.nix) =====
+// screenshot-edit: fullscreen overlay on top of the desktop
+window-rule {
+    match app-id="^com\\.gabm\\.satty$"
+
+    open-fullscreen true
+    open-focused true
+    geometry-corner-radius 0
+
+    focus-ring {
+        off
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        off
+    }
 }
 
 // Float every DaVinci Resolve window...

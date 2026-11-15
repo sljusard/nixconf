@@ -5,6 +5,7 @@
       settings = let
         rofiExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myRofi;
         footExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myFoot;
+        screenshotEditExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.screenshot-edit; # Declared in screenshots.nix
       in {
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
@@ -21,6 +22,7 @@
           "Mod+Return".spawn-sh = footExe;
           "Mod+T".spawn-sh = footExe;
           "Mod+S".spawn-sh = "${rofiExe} -show drun";
+          "Ctrl+F12".spawn-sh = screenshotEditExe;
         };
       };
 
