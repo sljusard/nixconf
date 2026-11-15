@@ -4,9 +4,10 @@
     # Each new interactive shell prints one of these at random
     greetings = [
       "There is no place like 127.0.0.1"
-      "Welcome back!"
+      "Welcome to the Emacs bootloader!"
       "Linux larpmaxxing"
       "No more ranked for me dawg"
+      "Holy Nix"
     ];
   in {
     config = {
