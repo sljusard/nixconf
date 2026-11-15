@@ -115,8 +115,6 @@
       ssh # Depends on noosphereSSH
       passwords
       ai
-      # virtualisation
-      arr
       media-server
       music-toolkit
 
