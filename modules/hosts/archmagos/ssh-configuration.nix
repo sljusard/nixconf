@@ -16,7 +16,7 @@
           SetEnv TERM=xterm-256color
 
         Host lexmechanic
-          Hostname 192.168.88.62
+          Hostname 192.168.88.61
           Port 4572
           User cypher
           SetEnv TERM=xterm-256color
