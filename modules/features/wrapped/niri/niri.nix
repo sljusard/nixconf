@@ -24,6 +24,7 @@
 
       extraSettings = [
         { include = ./config.kdl; }
+        { include = ./keybinds.kdl; }
         { include = ./outputs.kdl; }
       ];
     };
