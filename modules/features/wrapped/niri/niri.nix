@@ -17,6 +17,7 @@
 
         binds = {
           "Mod+Return".spawn-sh = footExe;
+          "Mod+T".spawn-sh = footExe;
           "Mod+S".spawn-sh = "${rofiExe} -show drun";
         };
       };
