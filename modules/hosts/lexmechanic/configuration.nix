@@ -95,13 +95,12 @@
         obs-studio
         telegram-desktop
         gimp
-        obsidian
+        # obsidian
         vesktop
         cliamp
         anki-bin
         digikam
         element-desktop
-        jellyfin-desktop
         feishin
       ];
     };
@@ -122,8 +121,6 @@
       passwords
       ai
       virtualisation
-      arr
-      media-server
       music-toolkit
 
       # Host-specific modules
@@ -146,7 +143,6 @@
       pandoc
       wl-clipboard
       sddm-astronaut
-      tetex
       dmidecode
       filezilla
       winboat
@@ -164,6 +160,7 @@
       mpv
       cifs-utils
       onlyoffice-desktopeditors
+      waypipe
     ];
 
     fonts.packages = [
