@@ -193,11 +193,11 @@
     boot.supportedFilesystems = [ "nfs" ];
     services.rpcbind.enable = true;
 
-    fileSystems."/mnt/warehouse" = {
-      device = "192.168.1.10:/nfs/warehouse";
-      fsType = "nfs";
-      options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
-    };
+    # fileSystems."/mnt/warehouse" = {
+    #   device = "192.168.1.10:/nfs/warehouse";
+    #   fsType = "nfs";
+    #   options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
+    # };
 
     # ====================== #
     # === SHELL SETTINGS === #
@@ -212,6 +212,7 @@
       niri-displayfix = "niri msg output HDMI-A-1 mode 2560x1440@143.996";
       doom = "~/.config/emacs/bin/doom emacs 2>/dev/null & disown";
       dvr = "distrobox enter resolve -- resolve-launch";
+      mount-econadzor = "sudo mount -t cifs -o username=admin_ds,domain=EKON,uid=$(id -u),gid=$(id -g),file_mode=0664,dir_mode=0775,nobrl //192.168.86.1/storage /mnt/econadzor/"; # temporary until proper NixOS mount declaration
     };
 
     networking.firewall.enable = true;
