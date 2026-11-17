@@ -217,7 +217,7 @@
       dvr = "distrobox enter resolve -- resolve-launch";
     };
 
-    networking.firewall.enable = false;
+    networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 11345 4544 ];
 
     # ===================== #
@@ -242,11 +242,6 @@
     # ====================== #
     # === OTHER SETTINGS === #
     # ====================== #
-
-    services.paperless = {
-      enable = true;
-      port = 8380;
-    };
 
     services.udisks2.enable = true;
 

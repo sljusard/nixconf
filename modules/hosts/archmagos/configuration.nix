@@ -234,11 +234,6 @@
     # === OTHER SETTINGS === #
     # ====================== #
 
-    services.paperless = {
-      enable = false;
-      port = 8380;
-    };
-
     services.udisks2.enable = true;
 
     services.printing.enable = false;
