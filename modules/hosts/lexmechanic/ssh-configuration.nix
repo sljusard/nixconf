@@ -11,7 +11,7 @@
     programs.ssh = {
       extraConfig = "
         Host ecoserver
-          Hostname 217.114.188.94
+          Hostname 5.53.17.101
           Port 4572
           User sljusard
           SetEnv TERM=xterm-256color
@@ -29,7 +29,8 @@
           ProxyJump prague-alpha
 
         Host archmagos
-          Hostname host.sljusard.org
+          Hostname 192.168.88.64
+          ProxyJump ecoserver
           Port 4572
           User cypher
           SetEnv TERM=xterm-256color
