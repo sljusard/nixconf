@@ -177,14 +177,14 @@
     # ========================= #
 
     # NAS mount
-    # boot.supportedFilesystems = [ "nfs" ];
-    # services.rpcbind.enable = true;
+    boot.supportedFilesystems = [ "nfs" ];
+    services.rpcbind.enable = true;
 
-    # fileSystems."/mnt/warehouse" = {
-      # device = "192.168.1.10:/nfs/warehouse";
-      # fsType = "nfs";
-      # options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
-    # };
+    fileSystems."/mnt/warehouse" = {
+      device = "192.168.88.60:/nfs/warehouse";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
+    };
 
     # ====================== #
     # === SHELL SETTINGS === #
