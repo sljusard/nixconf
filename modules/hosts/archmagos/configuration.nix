@@ -66,11 +66,6 @@
       theme = "sddm-astronaut-theme";
     };
 
-    # ================ #
-    # === KEYBOARD === #
-    # ================ #
-
-    # All settings are declared in features/keyboard.nix
 
     # ===================== #
     # === USER SETTINGS === #
