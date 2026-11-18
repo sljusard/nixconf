@@ -124,7 +124,7 @@
     ];
 
     environment.systemPackages = with pkgs; [
-      emacs
+      emacs-pgtk
       qbittorrent
       exfat
       warehouse
@@ -136,7 +136,6 @@
       sqlite
       pandoc
       wl-clipboard
-      sddm-astronaut
       dmidecode
       filezilla
       winboat
@@ -216,7 +215,7 @@
       LC_NUMERIC = "ru_RU.UTF-8";
       LC_PAPER = "ru_RU.UTF-8";
       LC_TELEPHONE = "ru_RU.UTF-8";
-      LC_TIME = "ru_RU.UTF-8";
+      LC_TIME = "en_IE.UTF-8";
     };
 
     # ================== #
