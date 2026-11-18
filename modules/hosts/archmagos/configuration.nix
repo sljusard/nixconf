@@ -249,7 +249,6 @@
 
     programs.labwc.enable = false;
 
-    programs.yazi.enable = true;
     programs.lazygit.enable = true;
 
     services.flatpak.enable = true;

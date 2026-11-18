@@ -90,7 +90,6 @@
       gawk
     ];
 
-    programs.yazi.enable = true;
 
     programs.git.enable = true;
     programs.git.package = selfpkgs.myGit;
