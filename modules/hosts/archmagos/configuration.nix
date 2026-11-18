@@ -56,16 +56,16 @@
     # === LOGIN MANAGER === #
     # ===================== #
 
-    services.displayManager.sddm = {
+    services.displayManager.sddm = let
+      sddmTheme = pkgs.where-is-my-sddm-theme;
+    in {
       enable = true;
       wayland.enable = true;
       wayland.compositor = "kwin";
-      extraPackages = with pkgs; [
-        kdePackages.qtmultimedia
-      ];
-      theme = "sddm-astronaut-theme";
+      # Puts the theme's QML deps (qt5compat, qtsvg) in the greeter's environment
+      extraPackages = [ sddmTheme ];
+      theme = "${sddmTheme}/share/sddm/themes/where_is_my_sddm_theme";
     };
-
 
     # ===================== #
     # === USER SETTINGS === #
