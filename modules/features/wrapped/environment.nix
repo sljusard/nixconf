@@ -21,6 +21,8 @@
         pkgs.ripgrep
         pkgs.fd
         pkgs.ffmpeg-full
+        pkgs.usbutils
+        pkgs.pciutils
       ];
       env = {
         EDITOR = lib.getExe selfpkgs.myNeovim;
