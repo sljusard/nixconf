@@ -8,7 +8,6 @@
         screenshotEditExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.screenshot-edit; # Declared in screenshots.nix
       in {
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
-
         spawn-at-startup = [ (lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myNoctalia) ];
 
         layer-rules = [
