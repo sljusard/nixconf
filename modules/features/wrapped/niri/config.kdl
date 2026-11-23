@@ -8,7 +8,7 @@ input {
         xkb {
             layout "us,ru"
             variant "colemak,"
-            options "grp:alt_shift_toggle,compose:rctrl"
+            options "grp:alt_shift_toggle,grp:caps_select,compose:rctrl"
         }
 
         repeat-rate 40
