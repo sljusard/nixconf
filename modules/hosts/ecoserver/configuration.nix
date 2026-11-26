@@ -282,7 +282,6 @@
 
     security.rtkit.enable = true;
 
-
     programs.git.enable = true;
     programs.git.package = selfpkgs.myGit;
 

@@ -62,7 +62,6 @@
       enable = true;
       wayland.enable = true;
       wayland.compositor = "kwin";
-      # Puts the theme's QML deps (qt5compat, qtsvg) in the greeter's environment
       extraPackages = [ sddmTheme ];
       theme = "${sddmTheme}/share/sddm/themes/where_is_my_sddm_theme";
     };
@@ -106,7 +105,7 @@
       podman
       desktop
       keyboard
-      ssh # Depends on noosphereSSH
+      ssh # Depends on archmagosSSH
       passwords
       ai
       media-server
@@ -183,9 +182,6 @@
     # ====================== #
     # === SHELL SETTINGS === #
     # ====================== #
-
-    # programs.zsh.enable = true;
-    # users.defaultUserShell = pkgs.zsh;
 
     programs.fish.shellAliases = {
       # winboot = "sudo bootctl set-oneshot auto-windows && reboot";

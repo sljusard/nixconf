@@ -23,7 +23,6 @@
     defaults = builtins.fromTOML (builtins.readFile
       "${pkgs.yazi-unwrapped.srcs.code_src}/yazi-config/preset/keymap-default.toml");
 
-    # Only keys that translate to Cyrillic are mirrored, so nothing collides with Latin binds
     mirror = binds: lib.concatMap (b:
       let on = lib.toList b.on; ru = map tr on;
       in lib.optional (ru != on) (b // { on = ru; })) binds;
