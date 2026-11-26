@@ -88,12 +88,7 @@
         vlc
         obs-studio
         telegram-desktop
-        gimp
-        # obsidian
-        vesktop
-        cliamp
         anki-bin
-        digikam
         element-desktop
         feishin
       ];
@@ -139,9 +134,7 @@
       sddm-astronaut
       dmidecode
       filezilla
-      winboat
       waydroid-helper
-      winbox
       fontconfig
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.dvr-patched.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -149,7 +142,6 @@
       kdePackages.okular
       halloy
       librewolf
-      firefox
       imv
       mpv
       cifs-utils
