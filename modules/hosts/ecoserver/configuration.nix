@@ -3,17 +3,6 @@
   flake.nixosModules.ecoserverConfiguration = { pkgs, lib, ... }: let
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
-    imports = with self.nixosModules; [
-      ssh # Depends on ecoserverSSH
-      continuwuity
-      podman
-      livekit
-
-      # Host specific modules
-      ecoserverHardware
-      ecoserverSSH
-    ];
-
     # ======================== #
     # === NixOS ESSENTIALS === #
     # ======================== #
@@ -61,7 +50,7 @@
     users.users.sljusard = {
       isNormalUser = true;
       description = "Denis Sliusar";
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "media" ];
       packages = with pkgs; [
       ];
     };
@@ -72,11 +61,37 @@
 
     nixpkgs.config.allowUnfree = true;
 
+    imports = with self.nixosModules; [
+      ssh # Depends on ecoserverSSH
+      continuwuity
+      podman
+      livekit
+      media-server
+
+      # Host specific modules
+      ecoserverHardware
+      ecoserverSSH
+    ];
+
     environment.systemPackages = with pkgs; [
       openssl
       jq
       gawk
     ];
+
+    # ========================= #
+    # === FILESYSTEM MOUNTS === #
+    # ========================= #
+
+    # NAS mount
+    boot.supportedFilesystems = [ "nfs" ];
+    services.rpcbind.enable = true;
+
+    fileSystems."/mnt/warehouse" = {
+      device = "192.168.88.60:/nfs/warehouse";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=60" ];
+    };
 
     # ====================== #
     # === SHELL SETTINGS === #
@@ -139,7 +154,7 @@
       '';
 
       "music.sljusard.org".extraConfig = ''
-        reverse_proxy 192.168.88.64:4544
+        reverse_proxy 127.0.0.1:4544
       '';
 
       "auth.econadzor.org".extraConfig = ''
@@ -183,9 +198,9 @@
       25 465 587 # SMTP
       143 993 # IMAP
       110 995 # POP3 
-      4190 # Sieve 
+      4190 # Sieve
       3022 4440 3389 # Other
-      1935 # Owncast
+      4544 # Navidrome (LAN access only)
     ];
     networking.firewall.allowedUDPPorts = [ 3389 8189 ];
     
