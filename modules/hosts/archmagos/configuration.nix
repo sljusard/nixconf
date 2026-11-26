@@ -75,7 +75,6 @@
         jellyfin-desktop
         feishin
         inkscape
-        winboat
       ];
     };
 
@@ -170,8 +169,8 @@
     # ====================== #
 
     programs.fish.shellAliases = {
-      # winboot = "sudo bootctl set-oneshot auto-windows && reboot";
-      rebuild = "sudo nixos-rebuild switch --flake /home/cypher/nixconf#archmagos";
+      winboot = "sudo bootctl set-oneshot auto-windows && reboot"; # Reboot into winbows
+      rebuild = "sudo nixos-rebuild switch --flake /home/cypher/nixconf#archmagos -L";
       sysconf = "vim /home/cypher/nixconf/modules/hosts/archmagos/configuration.nix";
       niri-displayfix = "niri msg output DP-4 mode 2560x1440@179.999";
     };
