@@ -53,20 +53,6 @@
     services.xserver.videoDrivers = [ "nvidia" ];
 
     # ===================== #
-    # === LOGIN MANAGER === #
-    # ===================== #
-
-    services.displayManager.sddm = let
-      sddmTheme = pkgs.where-is-my-sddm-theme;
-    in {
-      enable = true;
-      wayland.enable = true;
-      wayland.compositor = "kwin";
-      extraPackages = [ sddmTheme ];
-      theme = "${sddmTheme}/share/sddm/themes/where_is_my_sddm_theme";
-    };
-
-    # ===================== #
     # === USER SETTINGS === #
     # ===================== #
 

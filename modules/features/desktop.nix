@@ -11,20 +11,15 @@
     systemd.packages = [ selfpkgs.myMango ]; # mango hot-reload user service
 
     services.displayManager.defaultSession = lib.head config.programs.niri.package.providedSessions;
-
-    # programs.dconf.enable = true;
-    # programs.dconf.profiles.user.databases = [{
-    #   settings."org/gnome/desktop/interface" = {
-    #     color-scheme = "prefer-dark";
-    #     gtk-theme = "Adwaita-dark";
-    #   };
-    # }];
-    #
-    # qt.enable = true;
-    # qt = {
-    #   platformTheme = "gnome";
-    #   style = "adwaita-dark";
-    # };
+    services.displayManager.sddm = let
+      sddmTheme = pkgs.where-is-my-sddm-theme;
+    in {
+      enable = true;
+      wayland.enable = true;
+      wayland.compositor = "kwin";
+      extraPackages = [ sddmTheme ];
+      theme = "${sddmTheme}/share/sddm/themes/where_is_my_sddm_theme";
+    };
 
     programs.noctalia.enable = true;
     programs.noctalia.package = selfpkgs.myNoctalia; # Declared in noctalia/noctalia.nix
