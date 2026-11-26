@@ -226,18 +226,12 @@
         directory = /mnt/nas/games/installers
     '';
 
-    programs.labwc.enable = true;
-
     programs.lazygit.enable = true;
 
     services.flatpak.enable = true;
     services.lact.enable = true;
 
     programs.thunderbird.enable = true;
-    services.protonmail-bridge.enable = true;
-
-    virtualisation.waydroid.enable = true;
-    virtualisation.waydroid.package = pkgs.waydroid-nftables;
 
     xdg.mime.defaultApplications = {
       "application/pdf" = "okularApplication_pdf.desktop";
