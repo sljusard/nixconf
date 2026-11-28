@@ -59,7 +59,7 @@
     users.users.cypher = {
       isNormalUser = true;
       description = "Cypher";
-      extraGroups = [ "input" "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" "libvirtd" "media" ];
+      extraGroups = [ "input" "networkmanager" "wheel" "gamemode" "podman" "scanner" "lp" "libvirtd" ];
       packages = with pkgs; [
         vlc
         obs-studio
@@ -93,7 +93,6 @@
       ssh # Depends on archmagosSSH
       passwords
       ai
-      media-server
       music-toolkit
 
       # Host-specific modules
@@ -200,9 +199,7 @@
 
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [
-      80 443 # Caddy
       11345 # qBittorrent
-      4544 # Navidrome
     ];
 
     # ====================== #
