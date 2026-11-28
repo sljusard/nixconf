@@ -20,12 +20,26 @@ input {
     }
 }
 
+// Windows-like cursor (posy-cursors, added to XCURSOR_PATH in niri.nix)
+cursor {
+    xcursor-theme "Posy_Cursor"
+    xcursor-size 24
+}
+
 layout {
     background-color "transparent"
     gaps 5
     focus-ring {
         width 2
         active-color "#88C8DF"
+    }
+    shadow {
+        on
+        softness 12
+        spread 2
+        offset x=0 y=3
+        color "#0006"
+        inactive-color "#0003"
     }
 }
 

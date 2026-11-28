@@ -2,6 +2,8 @@
 
   flake.nixosModules.myNiri = { pkgs, lib, config, ... }: {
     config = {
+     prefixVar = [ [ "XCURSOR_PATH" ":" "${config.pkgs.posy-cursors}/share/icons" ] ];
+
       settings = let
         rofiExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myRofi;
         footExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.myFoot;
